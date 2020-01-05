@@ -10,12 +10,12 @@ function Sidebar() {
       <Menu
         mode="inline"
         theme="dark"
-        defaultSelectedKeys={['1']}
+        // defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         style={{ height: '100%', borderRight: 0 }}
       >
         <Menu.Item key="1">
-          <Link to="/">
+          <Link to="/dashboard">
             <Icon type="laptop" />
             <span>Dashboard</span>
           </Link>
@@ -36,6 +36,12 @@ function Sidebar() {
           <Link to="graph">
             <Icon type="laptop" />
             <span>graph</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="5">
+          <Link to="chart">
+            <Icon type="user" />
+            <span>chart</span>
           </Link>
         </Menu.Item>
       </Menu>

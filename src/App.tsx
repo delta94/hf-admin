@@ -8,10 +8,12 @@ import styled from 'styled-components';
 import Header from './components/Layout/Head';
 import Sidebar from './components/Layout/Sidebar';
 
+import Home from './pages/Home/Home';
 import Dashboard from './pages/Dashboard/Dashboard';
 import User from './pages/User/User';
 import Setting from './pages/Setting/Setting';
 import Graph from './pages/Graph/Graph';
+import Chart from './pages/Chart/Chart';
 
 import client from './graphql/apollo';
 
@@ -30,10 +32,12 @@ function App() {
             <Sidebar />
             <Layout>
               <Switch>
-                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/user" component={User} />
                 <Route exact path="/setting" component={Setting} />
                 <Route exact path="/graph" component={Graph} />
+                <Route exact path="/chart" component={Chart} />
               </Switch>
             </Layout>
           </Layout>

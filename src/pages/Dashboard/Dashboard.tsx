@@ -1,7 +1,10 @@
 import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_USERINFO, GET_USERS } from '../../graphql/queries';
 import 'antd/dist/antd.css';
 import styled from 'styled-components';
 import { Layout, Card, Button } from 'antd';
+
 const { Content } = Layout;
 
 const StyledContent = styled(Content)`
@@ -23,11 +26,12 @@ const TrafficSales = styled(Card)`
 `;
 
 function Dashboard() {
+  const { data } = useQuery(GET_USERS, {
+    fetchPolicy: 'network-only',
+  });
+
   return (
     <StyledContent>
-      <Button type="primary" size="large">
-        <a href={'http://localhost:4000/auth/google'}>구글로그인</a>
-      </Button>
       <div
         style={{
           display: 'flex',
@@ -36,9 +40,23 @@ function Dashboard() {
           paddingBottom: '35px',
         }}
       >
-        <NumberOfUser title="총 멤버"></NumberOfUser>
+        <NumberOfUser title="총 멤버">
+          {data ? <p>{data.users.length}</p> : <div>x</div>}
+        </NumberOfUser>
         <NumberOfUser title="오늘의 신규 가입자"></NumberOfUser>
-        <NumberOfUser title="온라인 멤버"></NumberOfUser>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingBottom: '35px',
+        }}
+      >
+        <NumberOfUser title="Google">
+          {data ? <p>{data.users.length}</p> : <div>x</div>}
+        </NumberOfUser>
+        <NumberOfUser title="Facebook"></NumberOfUser>
       </div>
       <TrafficSales title="traffic & sales">
         <div
