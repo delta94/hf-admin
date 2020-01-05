@@ -1,37 +1,45 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'antd/dist/antd.css';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { Layout } from 'antd';
 import styled from 'styled-components';
 
 import Header from './components/Layout/Head';
 import Sidebar from './components/Layout/Sidebar';
 
-import Dashboard from './containers/Dashboard';
-import User from './containers/User';
-import Setting from './containers/Setting';
+import Dashboard from './pages/Dashboard/Dashboard';
+import User from './pages/User/User';
+import Setting from './pages/Setting/Setting';
+import Graph from './pages/Graph/Graph';
+
+import client from './graphql/apollo';
 
 const MainLayout = styled(Layout)`
   height: 100vh;
+  overflow: scroll;
 `;
 
 function App() {
   return (
-    <MainLayout>
-      <BrowserRouter>
-        {/* <Header /> */}
-        <Layout>
-          <Sidebar />
+    <ApolloProvider client={client}>
+      <MainLayout>
+        <BrowserRouter>
+          {/* <Header /> */}
           <Layout>
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/user" component={User} />
-              <Route exact path="/setting" component={Setting} />
-            </Switch>
+            <Sidebar />
+            <Layout>
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/user" component={User} />
+                <Route exact path="/setting" component={Setting} />
+                <Route exact path="/graph" component={Graph} />
+              </Switch>
+            </Layout>
           </Layout>
-        </Layout>
-      </BrowserRouter>
-    </MainLayout>
+        </BrowserRouter>
+      </MainLayout>
+    </ApolloProvider>
   );
 }
 
