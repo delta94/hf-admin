@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Layout, Menu, Icon } from 'antd';
+import styled from 'styled-components';
 const { Sider } = Layout;
 
 function Sidebar() {
@@ -14,16 +16,22 @@ function Sidebar() {
         style={{ height: '100%', borderRight: 0 }}
       >
         <Menu.Item key="1">
-          <Icon type="laptop" />
-          <span>Dashboard</span>
+          <Link to="/">
+            <Icon type="laptop" />
+            <span>Dashboard</span>
+          </Link>
         </Menu.Item>
         <Menu.Item key="2">
-          <Icon type="user" />
-          <span>User</span>
+          <Link to="/user">
+            <Icon type="user" />
+            <span>User</span>
+          </Link>
         </Menu.Item>
         <Menu.Item key="3">
-          <Icon type="setting" />
-          <span>Setting</span>
+          <Link to="setting">
+            <Icon type="setting" />
+            <span>Setting</span>
+          </Link>
         </Menu.Item>
       </Menu>
     </Sider>

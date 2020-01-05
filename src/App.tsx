@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import styled from 'styled-components';
 
-import Head from './components/Layout/Head';
+import Header from './components/Layout/Head';
 import Sidebar from './components/Layout/Sidebar';
 
-const { Content } = Layout;
+import Dashboard from './containers/Dashboard';
+import User from './containers/User';
+import Setting from './containers/Setting';
 
 const MainLayout = styled(Layout)`
   height: 100vh;
@@ -15,21 +18,19 @@ const MainLayout = styled(Layout)`
 function App() {
   return (
     <MainLayout>
-      <Head />
-      <Layout>
-        <Sidebar />
+      <BrowserRouter>
+        {/* <Header /> */}
         <Layout>
-          <Content
-            style={{
-              background: '#fff',
-              padding: 24,
-              margin: 0,
-            }}
-          >
-            대시보드입니다
-          </Content>
+          <Sidebar />
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/user" component={User} />
+              <Route exact path="/setting" component={Setting} />
+            </Switch>
+          </Layout>
         </Layout>
-      </Layout>
+      </BrowserRouter>
     </MainLayout>
   );
 }
