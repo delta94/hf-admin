@@ -12,14 +12,29 @@ const Graph = () => {
     fetchPolicy: 'network-only',
   });
 
-  let l1, l2, l3, l4, l5;
-
   if (data) {
-    l1 = data.users.filter((user) => user.levelOf3Dae === 'L1');
-    l2 = data.users.filter((user) => user.levelOf3Dae === 'L2');
-    l3 = data.users.filter((user) => user.levelOf3Dae === 'L3');
-    l4 = data.users.filter((user) => user.levelOf3Dae === 'L4');
-    l5 = data.users.filter((user) => user.levelOf3Dae === 'L5');
+    // console.log(data.users[0].motivations[0].motivation);
+    let weightInc = 0;
+    let wieghtDec = 0;
+    let findFriend = 0;
+    let loneliness = 0;
+    data.users.filter((user) =>
+      user.motivations.filter((moti) => {
+        if (moti.motivation === 'WEIGHT_INCREASE') {
+          weightInc += 1;
+        }
+        if (moti.motivation === 'WEIGHT_LOSS') {
+          wieghtDec += 1;
+        }
+        if (moti.motivation === 'FIND_FRIEND') {
+          findFriend += 1;
+        }
+        if (moti.motivation === 'LONELINESS') {
+          loneliness += 1;
+        }
+      }),
+    );
+    console.log(weightInc, wieghtDec, findFriend, loneliness);
   }
 
   return (

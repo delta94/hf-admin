@@ -1,12 +1,12 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { LEVELOF3DAE_CHART } from '../../chart/levelOf3DaeChart';
+import { MOTIVATION_CHART } from '../../chart/motivationChart';
 
 export const Chart = () => {
   return (
     <div>
       <div>
-        <LEVELOF3DAE_CHART />
+        <MOTIVATION_CHART />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { Layout, Card, Button } from 'antd';
 
 import { GENDER_CHART } from '../../chart/genderChart';
 import { LEVELOF3DAE_CHART } from '../../chart/levelOf3DaeChart';
+import { MOTIVATION_CHART } from '../../chart/motivationChart';
 
 const { Content } = Layout;
 
@@ -27,11 +28,11 @@ const NumberOfUserCard = styled(Card)`
   height: 230px;
 `;
 
-const TrafficSales = styled(Card)`
+const Chart = styled(Card)`
   alignitems: center;
   justifycontent: center;
   width: 100%;
-  height: 450px;
+  height: 470px;
   margin-bottom: 100px;
 `;
 
@@ -66,10 +67,12 @@ const Dashboard = () => {
           <GENDER_CHART />
         </NumberOfUserCard>
       </NumberOfUserDiv>
-      <TrafficSales title="traffic & sales">
-        <Card></Card>
+      <Chart title="삼대 중량">
         <LEVELOF3DAE_CHART />
-      </TrafficSales>
+      </Chart>
+      <Chart title="motivation">
+        <MOTIVATION_CHART />
+      </Chart>
     </StyledContent>
   );
 };
