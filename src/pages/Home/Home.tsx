@@ -14,8 +14,6 @@ const Home = () => {
       }}
     >
       {/* <Link to="dashboard"> */}
-      <input />
-      <input />
       <Button type="primary" size="large">
         <a href={'http://localhost:4000/auth/google'}>Admin Login</a>
       </Button>

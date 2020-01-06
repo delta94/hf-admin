@@ -1,11 +1,12 @@
 import React from 'react';
-import { GENDER_CHART } from '../../chart/genderChart';
+import { Bar } from 'react-chartjs-2';
+import { LEVELOF3DAE_CHART } from '../../chart/levelOf3DaeChart';
 
 export const Chart = () => {
   return (
     <div>
       <div>
-        <GENDER_CHART />
+        <LEVELOF3DAE_CHART />
       </div>
     </div>
   );

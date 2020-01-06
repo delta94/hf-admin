@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Layout, Card, Button } from 'antd';
 
 import { GENDER_CHART } from '../../chart/genderChart';
+import { LEVELOF3DAE_CHART } from '../../chart/levelOf3DaeChart';
 
 const { Content } = Layout;
 
@@ -39,12 +40,10 @@ const Dashboard = () => {
     fetchPolicy: 'network-only',
   });
 
-  let googleUser, facebookUser, male, female;
+  let googleUser, facebookUser;
   if (data) {
     googleUser = data.users.filter((user) => user.provider === 'GOOGLE');
     facebookUser = data.users.filter((user) => user.provider === 'FACEBOOK');
-    male = data.users.filter((user) => user.gender === 'MALE');
-    female = data.users.filter((user) => user.gender === 'FEMALE');
   }
 
   return (
@@ -69,6 +68,7 @@ const Dashboard = () => {
       </NumberOfUserDiv>
       <TrafficSales title="traffic & sales">
         <Card></Card>
+        <LEVELOF3DAE_CHART />
       </TrafficSales>
     </StyledContent>
   );
