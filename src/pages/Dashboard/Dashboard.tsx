@@ -8,6 +8,7 @@ import { Layout, Card } from 'antd';
 import { GENDER_CHART } from '../../chart/genderChart';
 import { LEVELOF3DAE_CHART } from '../../chart/levelOf3DaeChart';
 import { MOTIVATION_CHART } from '../../chart/motivationChart';
+import { WEEK_CHART } from '../../chart/weekChart';
 
 const { Content } = Layout;
 
@@ -73,7 +74,9 @@ const Dashboard = () => {
       <Chart title="motivation">
         <MOTIVATION_CHART />
       </Chart>
-      <Chart></Chart>
+      <Chart>
+        <WEEK_CHART />
+      </Chart>
     </StyledContent>
   );
 };

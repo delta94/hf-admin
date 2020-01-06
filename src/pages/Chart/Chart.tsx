@@ -1,12 +1,12 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { MOTIVATION_CHART } from '../../chart/motivationChart';
+import { WEEK_CHART } from '../../chart/weekChart';
 
 export const Chart = () => {
   return (
     <div>
       <div>
-        <MOTIVATION_CHART />
+        <WEEK_CHART />
       </div>
     </div>
   );
