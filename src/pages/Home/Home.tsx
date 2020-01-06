@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import { Layout, Button } from 'antd';
 const { Content } = Layout;
 
-function Home() {
+const Home = () => {
   return (
     <Content
       style={{
@@ -22,6 +22,6 @@ function Home() {
       {/* </Link> */}
     </Content>
   );
-}
+};
 
 export default Home;

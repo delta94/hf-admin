@@ -26,8 +26,17 @@ export const GET_USERS = gql`
       id
       email
       provider
+      gender
       nickname
       levelOf3Dae
+      motivations {
+        id
+        motivation
+      }
+      weekdays {
+        id
+        weekday
+      }
       messageToFriend
     }
   }

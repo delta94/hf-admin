@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 const { Content } = Layout;
 
-function Setting() {
+const Setting = () => {
   return (
     <Content
       style={{
@@ -16,6 +16,6 @@ function Setting() {
       세팅입니다
     </Content>
   );
-}
+};
 
 export default Setting;
