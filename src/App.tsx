@@ -22,7 +22,7 @@ const MainLayout = styled(Layout)`
   overflow: scroll;
 `;
 
-function App() {
+const App = () => {
   return (
     <ApolloProvider client={client}>
       <MainLayout>
@@ -45,6 +45,6 @@ function App() {
       </MainLayout>
     </ApolloProvider>
   );
-}
+};
 
 export default App;

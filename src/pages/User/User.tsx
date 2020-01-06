@@ -2,7 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 const { Content } = Layout;
-function User() {
+const User = () => {
   return (
     <Content
       style={{
@@ -14,6 +14,6 @@ function User() {
       유저입니다
     </Content>
   );
-}
+};
 
 export default User;
