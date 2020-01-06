@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../graphql/queries';
 import 'antd/dist/antd.css';
 import styled from 'styled-components';
-import { Layout, Card, Button } from 'antd';
+import { Layout, Card } from 'antd';
 
 import { GENDER_CHART } from '../../chart/genderChart';
 import { LEVELOF3DAE_CHART } from '../../chart/levelOf3DaeChart';
@@ -73,6 +73,7 @@ const Dashboard = () => {
       <Chart title="motivation">
         <MOTIVATION_CHART />
       </Chart>
+      <Chart></Chart>
     </StyledContent>
   );
 };
