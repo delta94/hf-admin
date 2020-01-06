@@ -66,7 +66,7 @@ export const WEEK_CHART = () => {
           options={{
             title: {
               display: true,
-              text: 'motivation',
+              text: '운동 가능 날',
               fontSize: 20,
             },
             legend: {
