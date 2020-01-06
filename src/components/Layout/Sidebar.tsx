@@ -15,7 +15,7 @@ function Sidebar() {
         style={{ height: '100%', borderRight: 0 }}
       >
         <Menu.Item key="1">
-          <Link to="/dashboard">
+          <Link to="/">
             <Icon type="laptop" />
             <span>Dashboard</span>
           </Link>

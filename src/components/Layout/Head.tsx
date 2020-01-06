@@ -1,17 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Layout, Menu } from 'antd';
+import { Layout, Input, Icon, Button, Form } from 'antd';
 const { Header } = Layout;
 
 function Head() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onChangeUsernmae = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const onLogin = (username, password) => {
+    console.log(username, password);
+  };
   return (
     <Header className="header">
-      <div className="logo" />
-      <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }}>
-        <Menu.Item key="1">Dashboard</Menu.Item>
-        <Menu.Item key="2">User</Menu.Item>
-        <Menu.Item key="3">Setting</Menu.Item>
-      </Menu>
+      <Button type="primary" size="large">
+        <a href={'http://localhost:4000/auth/google'}>임시 admin button</a>
+      </Button>
+      <Form style={{ position: 'absolute', top: '10px', right: '20px' }}>
+        <Input
+          prefix={<Icon type="user" />}
+          style={{ width: '150px', marginRight: '15px' }}
+          placeholder="Username"
+          value={username}
+          onChange={onChangeUsernmae}
+        />
+        <Input
+          prefix={<Icon type="lock" />}
+          style={{ width: '150px', marginRight: '15px' }}
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={onChangePassword}
+        />
+        <Button
+          type="primary"
+          size="large"
+          onClick={() => onLogin(username, password)}
+        >
+          Login
+        </Button>
+      </Form>
     </Header>
   );
 }
