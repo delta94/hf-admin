@@ -16,14 +16,14 @@ function Sidebar() {
       >
         <Menu.Item key="1">
           <Link to="/">
-            <Icon type="laptop" />
+            <Icon type="home" />
             <span>Dashboard</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="2">
-          <Link to="/user">
+          <Link to="/users">
             <Icon type="user" />
-            <span>User</span>
+            <span>Users</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="3">
@@ -34,13 +34,13 @@ function Sidebar() {
         </Menu.Item>
         <Menu.Item key="4">
           <Link to="graph">
-            <Icon type="laptop" />
+            <Icon type="area-chart" />
             <span>graph</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="5">
           <Link to="chart">
-            <Icon type="user" />
+            <Icon type="pie-chart" />
             <span>chart</span>
           </Link>
         </Menu.Item>

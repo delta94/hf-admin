@@ -9,7 +9,7 @@ import Header from './components/Layout/Head';
 import Sidebar from './components/Layout/Sidebar';
 
 import Dashboard from './pages/Dashboard/Dashboard';
-import User from './pages/User/User';
+import Users from './pages/Users';
 import Setting from './pages/Setting/Setting';
 import Graph from './pages/Graph/Graph';
 import Chart from './pages/Chart/Chart';
@@ -32,10 +32,10 @@ const App = () => {
             <Layout>
               <Switch>
                 <Route exact path="/" component={Dashboard} />
-                <Route exact path="/user" component={User} />
-                <Route exact path="/setting" component={Setting} />
-                <Route exact path="/graph" component={Graph} />
-                <Route exact path="/chart" component={Chart} />
+                <Route path="/users" component={Users} />
+                <Route path="/setting" component={Setting} />
+                <Route path="/graph" component={Graph} />
+                <Route path="/chart" component={Chart} />
               </Switch>
             </Layout>
           </Layout>
