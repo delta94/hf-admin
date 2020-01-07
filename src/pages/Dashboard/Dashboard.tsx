@@ -5,10 +5,10 @@ import 'antd/dist/antd.css';
 import styled from 'styled-components';
 import { Layout, Card } from 'antd';
 
-import { GENDER_CHART } from '../../chart/genderChart';
-import { LEVELOF3DAE_CHART } from '../../chart/levelOf3DaeChart';
-import { MOTIVATION_CHART } from '../../chart/motivationChart';
-import { WEEK_CHART } from '../../chart/weekChart';
+import { GENDER_CHART } from './chart/genderChart';
+import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
+import { MOTIVATION_CHART } from './chart/motivationChart';
+import { WEEK_CHART } from './chart/weekChart';
 
 const { Content } = Layout;
 

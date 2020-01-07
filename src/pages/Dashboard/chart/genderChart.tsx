@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_USERS } from '../graphql/queries';
+import { GET_USERS } from '../../../graphql/queries';
 import { Pie } from 'react-chartjs-2';
 
 export const GENDER_CHART = () => {

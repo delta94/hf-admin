@@ -1,45 +1,30 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_USERS } from '../graphql/queries';
+import { GET_USERS } from '../../../graphql/queries';
 import { Bar } from 'react-chartjs-2';
 
-export const MOTIVATION_CHART = () => {
+export const LEVELOF3DAE_CHART = () => {
   const { data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
-  let weightInc = 0;
-  let wieghtDec = 0;
-  let findFriend = 0;
-  let loneliness = 0;
-  let barData;
+  let l1, l2, l3, l4, l5, barData;
   if (data) {
     if (data) {
-      data.users.filter((user) =>
-        user.motivations.filter((moti) => {
-          if (moti.motivation === 'WEIGHT_INCREASE') {
-            weightInc += 1;
-          }
-          if (moti.motivation === 'WEIGHT_LOSS') {
-            wieghtDec += 1;
-          }
-          if (moti.motivation === 'FIND_FRIEND') {
-            findFriend += 1;
-          }
-          if (moti.motivation === 'LONELINESS') {
-            loneliness += 1;
-          }
-        }),
-      );
+      l1 = data.users.filter((user) => user.levelOf3Dae === 'L1');
+      l2 = data.users.filter((user) => user.levelOf3Dae === 'L2');
+      l3 = data.users.filter((user) => user.levelOf3Dae === 'L3');
+      l4 = data.users.filter((user) => user.levelOf3Dae === 'L4');
+      l5 = data.users.filter((user) => user.levelOf3Dae === 'L5');
     }
     barData = {
-      labels: ['증량', '증감', '친구찾기', '외로움'],
+      labels: ['생초보', '초보', '중수', '고수', '괴물'],
       datasets: [
         {
           label: '인원',
           backgroundColor: 'rgba(75,192,192,1)',
           borderColor: 'rgba(0,0,0,1)',
           borderWidth: 2,
-          data: [weightInc, wieghtDec, findFriend, loneliness],
+          data: [l1.length, l2.length, l3.length, l4.length, l5.length],
         },
       ],
     };
@@ -53,7 +38,7 @@ export const MOTIVATION_CHART = () => {
           options={{
             title: {
               display: true,
-              text: 'motivation',
+              text: '삼대 중량',
               fontSize: 20,
             },
             legend: {

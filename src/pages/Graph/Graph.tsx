@@ -11,9 +11,16 @@ const Graph = () => {
     fetchPolicy: 'network-only',
   });
 
+  if (data) {
+    console.log(data.users);
+    data.users.map((user) => {
+      console.log(user.email);
+    });
+  }
+
   return (
     <div>
-      <Content>{data ? <div></div> : <div>로그인</div>}</Content>
+      <Content>그래프큐엘 테스트 페이지</Content>
     </div>
   );
 };
