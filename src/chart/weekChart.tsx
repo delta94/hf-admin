@@ -43,7 +43,6 @@ export const WEEK_CHART = () => {
         }),
       );
     }
-    console.log(mon, tue, wed, thu, fri, sat, sun);
     barData = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       datasets: [
