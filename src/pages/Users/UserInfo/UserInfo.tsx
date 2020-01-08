@@ -38,7 +38,7 @@ const UserInfo = () => {
               <Link to={`/users/${i}`}>{user.nickname}</Link>
             </td>
             <td>{user.levelOf3Dae}</td>
-            <td>2020-01-7</td>
+            <td>{user.createdAt.slice(0, 10)}</td>
             <td>게스트</td>
           </tr>
         ))}
