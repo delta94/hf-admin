@@ -38,31 +38,31 @@ const Chart = styled(Card)`
 `;
 
 const Dashboard = () => {
-  const { data } = useQuery(GET_USERS, {
+  const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
 
-  let googleUser, facebookUser;
-  if (data) {
-    googleUser = data.users.filter((user) => user.provider === 'GOOGLE');
-    facebookUser = data.users.filter((user) => user.provider === 'FACEBOOK');
-  }
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>오류 :(</p>;
+
+  let googleUser = data.users.filter((user) => user.provider === 'GOOGLE');
+  let facebookUser = data.users.filter((user) => user.provider === 'FACEBOOK');
 
   return (
     <StyledContent>
       <NumberOfUserDiv>
         <NumberOfUserCard title="총 멤버">
-          {data ? <p>{data.users.length}</p> : <div>x</div>}
+          <p>{data.users.length}</p>
         </NumberOfUserCard>
         <NumberOfUserCard title="오늘의 신규 가입자"></NumberOfUserCard>
         <NumberOfUserCard title="주간 신규 가입자"></NumberOfUserCard>
       </NumberOfUserDiv>
       <NumberOfUserDiv>
         <NumberOfUserCard title="Google">
-          {data ? <p>{googleUser.length}</p> : <div>x</div>}
+          <p>{googleUser.length}</p>
         </NumberOfUserCard>
         <NumberOfUserCard title="Facebook">
-          {data ? <p>{facebookUser.length}</p> : <div>x</div>}
+          <p>{facebookUser.length}</p>
         </NumberOfUserCard>
         <NumberOfUserCard title="성비">
           <GENDER_CHART />

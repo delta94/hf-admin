@@ -27,19 +27,19 @@ function Sidebar() {
           </Link>
         </Menu.Item>
         <Menu.Item key="3">
-          <Link to="setting">
+          <Link to="/setting">
             <Icon type="setting" />
             <span>Setting</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="4">
-          <Link to="graph">
+          <Link to="/graph">
             <Icon type="area-chart" />
             <span>graph</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="5">
-          <Link to="chart">
+          <Link to="/chart">
             <Icon type="pie-chart" />
             <span>chart</span>
           </Link>

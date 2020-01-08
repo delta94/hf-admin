@@ -6,14 +6,18 @@ import { GET_USERS } from '../../../graphql/queries';
 import 'antd/dist/antd.css';
 
 const UserInfo = () => {
-  const { data } = useQuery(GET_USERS, {
+  const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
+
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>오류 :(</p>;
 
   return (
     <table>
       <thead>
         <tr style={{ borderBottom: '1px solid lightblue' }}>
+          <th scope="col">id</th>
           <th scope="col">email</th>
           <th scope="col">nickname</th>
           <th scope="col">삼대중량</th>
@@ -22,29 +26,22 @@ const UserInfo = () => {
         </tr>
       </thead>
       <tbody>
-        {data ? (
-          data.users.map((user) => (
-            <tr key={user.id}>
-              <th scope="row">
-                <Link to={`/users/${user.nickname}`}>{user.email}</Link>
-              </th>
-              <td>
-                <Link to={`/users/${user.nickname}`}>{user.nickname}</Link>
-              </td>
-              <td>{user.levelOf3Dae}</td>
-              <td>2020-01-7</td>
-              <td>게스트</td>
-            </tr>
-          ))
-        ) : (
-          <tr>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        {data.users.map((user, i) => (
+          <tr key={user.id}>
+            <th>
+              <Link to={`/users/${i}`}>{i}</Link>
+            </th>
+            <td scope="row">
+              <Link to={`/users/${i}`}>{user.email}</Link>
+            </td>
+            <td>
+              <Link to={`/users/${i}`}>{user.nickname}</Link>
+            </td>
+            <td>{user.levelOf3Dae}</td>
+            <td>2020-01-7</td>
+            <td>게스트</td>
           </tr>
-        )}
+        ))}
       </tbody>
     </table>
   );
