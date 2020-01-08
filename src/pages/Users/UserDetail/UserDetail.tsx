@@ -14,7 +14,7 @@ function UserDetail({ match, history }) {
   const motivation = data.users[match.params.id].motivations
     .map((user) => user.motivation)
     .join(',  ');
-
+  const createdAt = data.users[match.params.id].createdAt.slice(0, 10);
   const weekdays = data.users[match.params.id].weekdays
     .map((user) => user.weekday)
     .join(',  ');
@@ -47,6 +47,10 @@ function UserDetail({ match, history }) {
             <tr>
               <td>weekdays</td>
               <td>{weekdays}</td>
+            </tr>
+            <tr>
+              <td>createdAt</td>
+              <td>{createdAt}</td>
             </tr>
             <tr>
               <td>messageToFriend</td>
