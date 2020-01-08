@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function UserDetail({ match, history }) {
   //   const user = users.find((user) => user.id === match.params.id);
-  console.log(match.params.id);
+  console.log(match.params);
   return (
     <>
       <span>유저 디테일</span>

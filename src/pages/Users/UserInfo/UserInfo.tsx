@@ -21,24 +21,31 @@ const UserInfo = () => {
           <th scope="col">role</th>
         </tr>
       </thead>
-
-      {data ? (
-        data.users.map((user) => (
-          <tr key={user.id}>
-            <td>
-              <Link to={`/users/${user.nickname}`}>{user.email}</Link>
-            </td>
-            <td>
-              <Link to={`/users/${user.nickname}`}>{user.nickname}</Link>
-            </td>
-            <td>{user.levelOf3Dae}</td>
-            <td>2020-01-7</td>
-            <td>게스트</td>
+      <tbody>
+        {data ? (
+          data.users.map((user) => (
+            <tr key={user.id}>
+              <th scope="row">
+                <Link to={`/users/${user.nickname}`}>{user.email}</Link>
+              </th>
+              <td>
+                <Link to={`/users/${user.nickname}`}>{user.nickname}</Link>
+              </td>
+              <td>{user.levelOf3Dae}</td>
+              <td>2020-01-7</td>
+              <td>게스트</td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
-        ))
-      ) : (
-        <tr>loading</tr>
-      )}
+        )}
+      </tbody>
     </table>
   );
 };
