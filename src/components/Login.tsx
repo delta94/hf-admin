@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_TOKEN } from '../graphql/queries';
+import { GET_TOKEN, IS_LOGGED_IN } from '../graphql/queries';
 import { Input, Icon, Button, Form } from 'antd';
 let query;
 
 function Head() {
+  const initIsLogin = () => Boolean(localStorage.getItem('isLogin') || false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(initIsLogin);
 
-  const { data } = useQuery(GET_TOKEN, {
+  useEffect(() => {
+    localStorage.setItem('isLogin', String(isLogin));
+  }, [isLogin]);
+
+  const { loading, error, data } = useQuery(GET_TOKEN, {
     variables: { ...query },
   });
+
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>오류 :(</p>;
 
   const onChangeUsernmae = (e) => {
     setUsername(e.target.value);
@@ -27,6 +35,7 @@ function Head() {
     query = { email: username, password: password };
     setIsLogin(!isLogin);
   };
+
   return (
     <>
       <Button type="primary" size="large">
