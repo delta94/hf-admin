@@ -27,6 +27,7 @@ export const GET_USERS = gql`
       email
       provider
       gender
+      role
       nickname
       levelOf3Dae
       motivations {
@@ -61,18 +62,10 @@ export const MUTATE_INFO = gql`
   }
 `;
 
-export const SET_MOTIVATION = gql`
-  mutation SetMotivation($input: [MotivationEnum]) {
-    setMotivation(input: $input) {
-      motivation
-    }
-  }
-`;
-
-export const SET_EXERCISE_ABLE_DAYS = gql`
-  mutation SetExerciseAbleDay($input: [WeekdayEnum]) {
-    setExerciseAbleDay(input: $input) {
-      weekday
+export const GET_TOKEN = gql`
+  query getLogin($email: String, $password: String) {
+    login(email: $email, password: $password) {
+      token
     }
   }
 `;

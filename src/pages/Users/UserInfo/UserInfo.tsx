@@ -39,7 +39,7 @@ const UserInfo = () => {
             </td>
             <td>{user.levelOf3Dae}</td>
             <td>{user.createdAt.slice(0, 10)}</td>
-            <td>게스트</td>
+            <td>{user.role}</td>
           </tr>
         ))}
       </tbody>

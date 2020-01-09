@@ -27,11 +27,18 @@ const NumberOfUserDiv = styled.div`
 const NumberOfUserCard = styled(Card)`
   width: 280px;
   height: 230px;
+  text-align: center;
+`;
+
+const NumberOfUserText = styled.p`
+  vertical-align: middle;
+  margin: 30px;
+  font-size: 30px;
 `;
 
 const Chart = styled(Card)`
-  alignitems: center;
-  justifycontent: center;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 470px;
   margin-bottom: 100px;
@@ -52,17 +59,17 @@ const Dashboard = () => {
     <StyledContent>
       <NumberOfUserDiv>
         <NumberOfUserCard title="총 멤버">
-          <p>{data.users.length}</p>
+          <NumberOfUserText>{data.users.length}</NumberOfUserText>
         </NumberOfUserCard>
         <NumberOfUserCard title="오늘의 신규 가입자"></NumberOfUserCard>
         <NumberOfUserCard title="주간 신규 가입자"></NumberOfUserCard>
       </NumberOfUserDiv>
       <NumberOfUserDiv>
         <NumberOfUserCard title="Google">
-          <p>{googleUser.length}</p>
+          <NumberOfUserText>{googleUser.length}</NumberOfUserText>
         </NumberOfUserCard>
         <NumberOfUserCard title="Facebook">
-          <p>{facebookUser.length}</p>
+          <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
         </NumberOfUserCard>
         <NumberOfUserCard title="성비">
           <GENDER_CHART />
