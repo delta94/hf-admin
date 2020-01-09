@@ -23,6 +23,9 @@ function Head() {
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 :(</p>;
 
+  if (data.login) {
+    console.log('token', data.login.token);
+  }
   const onChangeUsernmae = (e) => {
     setUsername(e.target.value);
   };
