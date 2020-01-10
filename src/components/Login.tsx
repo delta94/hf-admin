@@ -32,8 +32,6 @@ const Login = () => {
 
   const onLogin = () => {
     query = { email: username, password: password };
-    if (isLogin) {
-    }
     setIsLogin(true);
   };
 
