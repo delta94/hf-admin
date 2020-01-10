@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_TOKEN } from '../graphql/queries';
 import { useCookies } from 'react-cookie';
 
-function Test({ query }) {
+const Test = ({ query }) => {
   const [cookies, setCookie] = useCookies(['name']);
   const { data } = useQuery(GET_TOKEN, {
     variables: { ...query },
@@ -21,12 +21,7 @@ function Test({ query }) {
     }
   }
 
-  return (
-    <>
-      {/* <span style={{ marginRight: '20px' }}>반갑습니다</span> */}
-      {/* <Button>Logout</Button> */}
-    </>
-  );
-}
+  return <></>;
+};
 
 export default Test;

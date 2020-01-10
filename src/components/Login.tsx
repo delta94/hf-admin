@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Input, Icon, Button, Form } from 'antd';
+import cookie from 'react-cookies';
 import Test from './LoginQuery';
 let query;
 
-function Login() {
+const Login = () => {
   const initIsLogin = () => Boolean(localStorage.getItem('isLogin') || false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(initIsLogin);
 
   useEffect(() => {
-    localStorage.setItem('isLogin', String(isLogin));
-  }, [isLogin]);
+    const data = localStorage.getItem('isLogin');
+    if (data) {
+      setIsLogin(Boolean(JSON.parse(data)));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('isLogin', JSON.stringify(isLogin));
+  });
 
   const onChangeUsernmae = (e) => {
     setUsername(e.target.value);
@@ -24,9 +32,15 @@ function Login() {
 
   const onLogin = () => {
     query = { email: username, password: password };
-    if (isLogin === true) {
+    if (isLogin) {
     }
-    setIsLogin(!isLogin);
+    setIsLogin(true);
+  };
+
+  const onLogout = () => {
+    cookie.remove('access-token');
+    setIsLogin(false);
+    window.location.reload();
   };
 
   return (
@@ -44,7 +58,7 @@ function Login() {
             <span style={{ marginRight: '20px' }}>반갑습니다</span>
             <Button
               onClick={() => {
-                onLogin();
+                onLogout();
               }}
             >
               Logout
@@ -76,6 +90,6 @@ function Login() {
       )}
     </>
   );
-}
+};
 
 export default Login;
