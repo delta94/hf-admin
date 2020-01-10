@@ -7,7 +7,7 @@ import { Input, Icon, Button, Form } from 'antd';
 
 let query;
 
-function Head() {
+function Login() {
   const initIsLogin = () => Boolean(localStorage.getItem('isLogin') || false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -91,4 +91,4 @@ function Head() {
   );
 }
 
-export default Head;
+export default Login;
