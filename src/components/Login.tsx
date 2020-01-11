@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Input, Icon, Button, Form } from 'antd';
-import cookie from 'react-cookies';
-import Test from './LoginQuery';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_TOKEN } from '../graphql/queries';
+import { useCookies } from 'react-cookie';
+// import Test from './LoginQuery';
 let query;
 
 const Login = () => {
@@ -10,6 +12,10 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(initIsLogin);
+  const [cookies, setCookie, removeCookie] = useCookies(['name']);
+  const { data } = useQuery(GET_TOKEN, {
+    variables: { ...query },
+  });
 
   useEffect(() => {
     const data = localStorage.getItem('isLogin');
@@ -36,14 +42,25 @@ const Login = () => {
   };
 
   const onLogout = () => {
-    cookie.remove('access-token');
+    removeCookie('access-token');
     setIsLogin(false);
     window.location.reload();
   };
 
+  const onCookie = (token) => {
+    setCookie('access-token', token);
+  };
+
+  if (data) {
+    if (data.login) {
+      onCookie(data.login.token);
+      window.location.reload();
+    }
+  }
+
   return (
     <>
-      {isLogin ? (
+      {isLogin && cookies['access-token'] ? (
         <>
           <Form
             style={{
@@ -61,7 +78,7 @@ const Login = () => {
             >
               Logout
             </Button>
-            <Test query={query} />
+            {/* <Test query={query} /> */}
           </Form>
         </>
       ) : (
