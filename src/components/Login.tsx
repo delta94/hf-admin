@@ -78,7 +78,6 @@ const Login = () => {
             >
               Logout
             </Button>
-            {/* <Test query={query} /> */}
           </Form>
         </>
       ) : (
