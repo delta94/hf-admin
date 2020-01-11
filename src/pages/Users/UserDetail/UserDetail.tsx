@@ -2,6 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
+import styled from 'styled-components';
+
+const MainDiv = styled.div`
+  font-size: 1.1rem;
+  font-weight: 500;
+`;
+
+const Table = styled.div`
+  width: 100%;
+  border-collapse: collapse;
+  && th,
+  td {
+    border-top: 1px solid #444444;
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+    text-align: center;
+  }
+  thead tr {
+    background-color: #0d47a1;
+    color: #ffffff;
+  }
+  tbody tr:nth-child(2n) {
+    background-color: #d1d1d1;
+  }
+  tbody tr:nth-child(2n + 1) {
+    background-color: #fff;
+  }
+`;
 
 function UserDetail({ match, history }) {
   const { loading, error, data } = useQuery(GET_USERS, {
@@ -20,13 +48,15 @@ function UserDetail({ match, history }) {
     .join(',  ');
 
   return (
-    <>
-      <Link to="/users">Back</Link>
+    <MainDiv>
       <div>
-        <span>유저 디테일</span>
+        <span style={{ marginRight: '40px' }}>
+          {data.users[match.params.id].nickname}님의 정보
+        </span>
+        <Link to="/users">Back</Link>
       </div>
       <div>
-        <table>
+        <Table>
           <tbody>
             <tr>
               <td>id</td>
@@ -53,13 +83,13 @@ function UserDetail({ match, history }) {
               <td>{createdAt}</td>
             </tr>
             <tr>
-              <td>messageToFriend</td>
+              <td>messageToFriend:</td>
               <td>{data.users[match.params.id].messageToFriend}</td>
             </tr>
           </tbody>
-        </table>
+        </Table>
       </div>
-    </>
+    </MainDiv>
   );
 }
 

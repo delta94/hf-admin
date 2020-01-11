@@ -2,8 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
-
+import styled from 'styled-components';
 import 'antd/dist/antd.css';
+
+const Table = styled.div`
+  width: 100%;
+  font-size: 1rem;
+  border-collapse: collapse;
+  && th,
+  td {
+    border-top: 1px solid #444444;
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+    text-align: center;
+  }
+`;
 
 const UserInfo = () => {
   const { loading, error, data } = useQuery(GET_USERS, {
@@ -14,7 +27,7 @@ const UserInfo = () => {
   if (error) return <p>오류 :(</p>;
 
   return (
-    <table>
+    <Table>
       <thead>
         <tr style={{ borderBottom: '1px solid lightblue' }}>
           <th scope="col">id</th>
@@ -43,7 +56,7 @@ const UserInfo = () => {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 };
 

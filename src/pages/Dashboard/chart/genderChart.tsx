@@ -18,7 +18,7 @@ export const GENDER_CHART = () => {
     datasets: [
       {
         data: [male.length, female.length],
-        backgroundColor: ['blue', 'red'],
+        backgroundColor: ['#ef5675', '#ff764a'],
       },
     ],
   };

@@ -80,7 +80,7 @@ export const WEEK_CHART = () => {
         },
         title: {
           display: true,
-          text: '운동 가능 날',
+          text: '운동 가능한 날',
           fontSize: 20,
         },
         legend: {
