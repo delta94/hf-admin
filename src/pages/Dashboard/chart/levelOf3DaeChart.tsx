@@ -19,37 +19,40 @@ export const LEVELOF3DAE_CHART = () => {
 
   let barData = {
     labels: ['생초보', '초보', '중수', '고수', '괴물'],
+
     datasets: [
       {
         label: '인원',
-        backgroundColor: 'rgba(75,192,192,1)',
+        backgroundColor: [
+          '#003f5c',
+          '#58508d',
+          '#bc5090',
+          '#ff6361',
+          '#ffa600',
+        ],
         borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 2,
+        borderWidth: 1,
         data: [l1.length, l2.length, l3.length, l4.length, l5.length],
       },
     ],
   };
 
   return (
-    <div>
-      {data ? (
-        <Bar
-          data={barData}
-          options={{
-            title: {
-              display: true,
-              text: '삼대 중량',
-              fontSize: 20,
-            },
-            legend: {
-              display: false,
-              position: 'top',
-            },
-          }}
-        />
-      ) : (
-        <div>x</div>
-      )}
-    </div>
+    <Bar
+      data={barData}
+      options={{
+        title: {
+          display: true,
+          text: '삼대 중량',
+          fontSize: 20,
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
+          position: 'top',
+        },
+      }}
+    />
   );
 };

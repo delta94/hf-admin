@@ -49,7 +49,15 @@ export const WEEK_CHART = () => {
     datasets: [
       {
         label: '인원',
-        backgroundColor: 'rgba(75,192,192,1)',
+        backgroundColor: [
+          '#003f5c',
+          '#374c80',
+          '#7a5195',
+          '#bc5090',
+          '#ef5675',
+          '#ff764a',
+          '#ffa600',
+        ],
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
         data: [mon, tue, wed, thu, fri, sat, sun],
@@ -61,6 +69,15 @@ export const WEEK_CHART = () => {
     <Bar
       data={barData}
       options={{
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
         title: {
           display: true,
           text: '운동 가능 날',

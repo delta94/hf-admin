@@ -40,8 +40,13 @@ const Chart = styled(Card)`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 470px;
+  height: 600px;
   margin-bottom: 100px;
+`;
+
+const ChartDiv = styled.div`
+  height: 400px;
+  width: 100%;
 `;
 
 const Dashboard = () => {
@@ -75,14 +80,20 @@ const Dashboard = () => {
           <GENDER_CHART />
         </NumberOfUserCard>
       </NumberOfUserDiv>
-      <Chart title="삼대 중량">
-        <LEVELOF3DAE_CHART />
-      </Chart>
-      <Chart title="motivation">
-        <MOTIVATION_CHART />
+      <Chart>
+        <ChartDiv>
+          <LEVELOF3DAE_CHART />
+        </ChartDiv>
       </Chart>
       <Chart>
-        <WEEK_CHART />
+        <ChartDiv>
+          <MOTIVATION_CHART />
+        </ChartDiv>
+      </Chart>
+      <Chart>
+        <ChartDiv>
+          <WEEK_CHART />
+        </ChartDiv>
       </Chart>
     </StyledContent>
   );

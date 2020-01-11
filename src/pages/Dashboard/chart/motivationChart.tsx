@@ -38,7 +38,7 @@ export const MOTIVATION_CHART = () => {
     datasets: [
       {
         label: '인원',
-        backgroundColor: 'rgba(75,192,192,1)',
+        backgroundColor: ['#003f5c', '#58508d', '#bc5090', '#ff6361'],
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 2,
         data: [weightInc, wieghtDec, findFriend, loneliness],
@@ -50,6 +50,16 @@ export const MOTIVATION_CHART = () => {
     <Bar
       data={barData}
       options={{
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+        responsive: true,
         title: {
           display: true,
           text: 'motivation',
