@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
-import { Bar } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 
 export const WEEK_CHART = () => {
   const { loading, error, data } = useQuery(GET_USERS, {
@@ -66,11 +66,11 @@ export const WEEK_CHART = () => {
   };
 
   return (
-    <Bar
+    <HorizontalBar
       data={barData}
       options={{
         scales: {
-          yAxes: [
+          xAxes: [
             {
               ticks: {
                 beginAtZero: true,

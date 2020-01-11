@@ -5,6 +5,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_TOKEN } from '../graphql/queries';
 import { useCookies } from 'react-cookie';
 // import Test from './LoginQuery';
+// 코드 리펙토링이 절실하다 또 token이 expired 되었을 경우를 추가하자
+// 로그인 되지 않았을 때 에러 메시지도 추가하고
 let query;
 
 const Login = () => {
