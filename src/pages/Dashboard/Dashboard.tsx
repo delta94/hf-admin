@@ -106,6 +106,21 @@ const Dashboard = () => {
           <MOTIVATION_CHART />
         </MotivationDiv>
       </ChartDiv>
+      <NumberOfUserDiv>
+        <StyledCard title="베스트 팔로우">
+          <NumberOfUserText></NumberOfUserText>
+        </StyledCard>
+        <StyledCard title="베스트 팔로잉">
+          <NumberOfUserText></NumberOfUserText>
+        </StyledCard>
+        <StyledCard title="베스트 지역">
+          <NumberOfUserText></NumberOfUserText>
+        </StyledCard>
+        <StyledCard title="워스트 지역">
+          <NumberOfUserText></NumberOfUserText>
+        </StyledCard>
+      </NumberOfUserDiv>
+      <ChartDiv></ChartDiv>
     </StyledContent>
   );
 };

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
-import { Input, Icon, Button, Form } from 'antd';
+import { Button, Form } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_TOKEN } from '../graphql/queries';
 import { useCookies } from 'react-cookie';
-// import Test from './LoginQuery';
+import LoginButton from './LoginButton';
+
 // error 500을 받을 때 로그아웃 시키기
 let query;
 
@@ -14,7 +15,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(initIsLogin);
   const [cookies, setCookie, removeCookie] = useCookies(['name']);
-  const { data } = useQuery(GET_TOKEN, {
+  const { loading, error, data } = useQuery(GET_TOKEN, {
     variables: { ...query },
   });
 
@@ -59,6 +60,20 @@ const Login = () => {
     }
   }
 
+  if (loading) return <p>로딩 중...</p>;
+  if (error) {
+    onLogout();
+    return (
+      <LoginButton
+        username={username}
+        onChangeUsernmae={onChangeUsernmae}
+        password={password}
+        onChangePassword={onChangePassword}
+        onLogin={onLogin}
+      />
+    );
+  }
+
   return (
     <>
       {isLogin && cookies['access-token'] ? (
@@ -82,26 +97,13 @@ const Login = () => {
           </Form>
         </>
       ) : (
-        <Form style={{ position: 'absolute', top: '10px', right: '20px' }}>
-          <Input
-            prefix={<Icon type="user" />}
-            style={{ width: '150px', marginRight: '15px' }}
-            placeholder="Username"
-            value={username}
-            onChange={onChangeUsernmae}
-          />
-          <Input
-            prefix={<Icon type="lock" />}
-            style={{ width: '150px', marginRight: '15px' }}
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={onChangePassword}
-          />
-          <Button type="primary" size="large" onClick={() => onLogin()}>
-            Login
-          </Button>
-        </Form>
+        <LoginButton
+          username={username}
+          onChangeUsernmae={onChangeUsernmae}
+          password={password}
+          onChangePassword={onChangePassword}
+          onLogin={onLogin}
+        />
       )}
     </>
   );
