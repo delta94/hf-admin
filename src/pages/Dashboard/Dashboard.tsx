@@ -10,8 +10,6 @@ import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
 import { MOTIVATION_CHART } from './chart/motivationChart';
 import { WEEK_CHART } from './chart/weekChart';
 
-import GoogleLogo from '../../assets/GoogleLogo.png';
-
 // 평균 팔로잉, 팔로워
 
 const { Content } = Layout;
@@ -42,21 +40,13 @@ const NumberOfUserText = styled.div`
   font-size: 30px;
 `;
 
-const Chart = styled(Card)`
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 600px;
-  margin-bottom: 100px;
-`;
-
 const ChartDiv = styled.div`
   display: flex;
   background-color: #fff;
   padding-top: 40px;
   height: 500px;
   width: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 35px;
 `;
 
 const LevelOf3DaeDiv = styled.div`
@@ -91,6 +81,9 @@ const Dashboard = () => {
           <GENDER_CHART />
         </StyledCard>
       </NumberOfUserDiv>
+      <ChartDiv>
+        <WEEK_CHART />
+      </ChartDiv>
       <NumberOfUserDiv>
         <StyledCard title="Google">
           <NumberOfUserText>{googleUser.length}</NumberOfUserText>
@@ -105,7 +98,6 @@ const Dashboard = () => {
           <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
         </StyledCard>
       </NumberOfUserDiv>
-
       <ChartDiv>
         <LevelOf3DaeDiv>
           <LEVELOF3DAE_CHART />
@@ -113,10 +105,6 @@ const Dashboard = () => {
         <MotivationDiv>
           <MOTIVATION_CHART />
         </MotivationDiv>
-      </ChartDiv>
-
-      <ChartDiv>
-        <WEEK_CHART />
       </ChartDiv>
     </StyledContent>
   );
