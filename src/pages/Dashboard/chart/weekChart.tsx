@@ -83,6 +83,8 @@ export const WEEK_CHART = () => {
           text: '운동 가능한 날',
           fontSize: 20,
         },
+        responsive: true,
+        maintainAspectRatio: false,
         legend: {
           display: false,
           position: 'top',

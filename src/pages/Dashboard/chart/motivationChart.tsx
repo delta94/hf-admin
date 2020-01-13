@@ -60,6 +60,8 @@ export const MOTIVATION_CHART = () => {
           ],
         },
         responsive: true,
+        maintainAspectRatio: false,
+
         title: {
           display: true,
           text: 'motivation',

@@ -10,6 +10,10 @@ import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
 import { MOTIVATION_CHART } from './chart/motivationChart';
 import { WEEK_CHART } from './chart/weekChart';
 
+import GoogleLogo from '../../assets/GoogleLogo.png';
+
+// 평균 팔로잉, 팔로워
+
 const { Content } = Layout;
 
 const StyledContent = styled(Content)`
@@ -24,15 +28,17 @@ const NumberOfUserDiv = styled.div`
   padding-bottom: 35px;
 `;
 
-const NumberOfUserCard = styled(Card)`
+const StyledCard = styled(Card)`
   width: 280px;
   height: 230px;
   text-align: center;
 `;
 
-const NumberOfUserText = styled.p`
+const NumberOfUserText = styled.div`
   vertical-align: middle;
-  margin: 30px;
+  margin: 30px 0;
+  height: 100%;
+  width: 100%;
   font-size: 30px;
 `;
 
@@ -45,8 +51,22 @@ const Chart = styled(Card)`
 `;
 
 const ChartDiv = styled.div`
-  height: 400px;
+  display: flex;
+  background-color: #fff;
+  padding-top: 70px;
+  height: 500px;
   width: 100%;
+  margin-bottom: 100px;
+`;
+
+const LevelOf3DaeDiv = styled.div`
+  height: 400px;
+  width: 48%;
+`;
+
+const MotivationDiv = styled.div`
+  height: 400px;
+  width: 48%;
 `;
 
 const Dashboard = () => {
@@ -63,38 +83,36 @@ const Dashboard = () => {
   return (
     <StyledContent>
       <NumberOfUserDiv>
-        <NumberOfUserCard title="총 멤버">
+        <StyledCard title="총 멤버">
           <NumberOfUserText>{data.users.length}</NumberOfUserText>
-        </NumberOfUserCard>
-        <NumberOfUserCard title="오늘의 신규 가입자"></NumberOfUserCard>
-        <NumberOfUserCard title="주간 신규 가입자"></NumberOfUserCard>
+        </StyledCard>
+        <StyledCard title="오늘의 신규 가입자"></StyledCard>
+        <StyledCard title="주간 신규 가입자"></StyledCard>
       </NumberOfUserDiv>
       <NumberOfUserDiv>
-        <NumberOfUserCard title="Google">
+        <StyledCard title="Google">
           <NumberOfUserText>{googleUser.length}</NumberOfUserText>
-        </NumberOfUserCard>
-        <NumberOfUserCard title="Facebook">
+        </StyledCard>
+        <StyledCard title="Facebook">
           <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
-        </NumberOfUserCard>
-        <NumberOfUserCard title="성비">
+        </StyledCard>
+        <StyledCard title="성비">
           <GENDER_CHART />
-        </NumberOfUserCard>
+        </StyledCard>
       </NumberOfUserDiv>
-      <Chart>
-        <ChartDiv>
+
+      <ChartDiv>
+        <LevelOf3DaeDiv>
           <LEVELOF3DAE_CHART />
-        </ChartDiv>
-      </Chart>
-      <Chart>
-        <ChartDiv>
+        </LevelOf3DaeDiv>
+        <MotivationDiv>
           <MOTIVATION_CHART />
-        </ChartDiv>
-      </Chart>
-      <Chart>
-        <ChartDiv>
-          <WEEK_CHART />
-        </ChartDiv>
-      </Chart>
+        </MotivationDiv>
+      </ChartDiv>
+
+      <ChartDiv>
+        <WEEK_CHART />
+      </ChartDiv>
     </StyledContent>
   );
 };
