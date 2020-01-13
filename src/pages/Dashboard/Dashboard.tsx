@@ -53,7 +53,7 @@ const Chart = styled(Card)`
 const ChartDiv = styled.div`
   display: flex;
   background-color: #fff;
-  padding-top: 70px;
+  padding-top: 40px;
   height: 500px;
   width: 100%;
   margin-bottom: 100px;
@@ -86,8 +86,10 @@ const Dashboard = () => {
         <StyledCard title="총 멤버">
           <NumberOfUserText>{data.users.length}</NumberOfUserText>
         </StyledCard>
-        <StyledCard title="오늘의 신규 가입자"></StyledCard>
         <StyledCard title="주간 신규 가입자"></StyledCard>
+        <StyledCard title="성비">
+          <GENDER_CHART />
+        </StyledCard>
       </NumberOfUserDiv>
       <NumberOfUserDiv>
         <StyledCard title="Google">
@@ -96,8 +98,11 @@ const Dashboard = () => {
         <StyledCard title="Facebook">
           <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
         </StyledCard>
-        <StyledCard title="성비">
-          <GENDER_CHART />
+        <StyledCard title="평균 친구 수">
+          <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
+        </StyledCard>
+        <StyledCard title="평균 팔로우 수">
+          <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
         </StyledCard>
       </NumberOfUserDiv>
 

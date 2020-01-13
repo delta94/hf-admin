@@ -23,5 +23,13 @@ export const GENDER_CHART = () => {
     ],
   };
 
-  return <Pie data={pieData} />;
+  return (
+    <Pie
+      data={pieData}
+      options={{
+        responsive: true,
+        maintainAspectRatio: true,
+      }}
+    />
+  );
 };
