@@ -26,8 +26,6 @@ const UserInfo = () => {
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 :(</p>;
 
-  console.log(data.users[0]);
-
   return (
     <Table>
       <thead>

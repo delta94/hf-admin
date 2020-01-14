@@ -5,8 +5,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_TOKEN } from '../graphql/queries';
 import { useCookies } from 'react-cookie';
 import LoginButton from './LoginButton';
-
-// error 500을 받을 때 로그아웃 시키기
 let query;
 
 const Login = () => {
