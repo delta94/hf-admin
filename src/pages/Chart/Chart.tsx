@@ -15,11 +15,20 @@ const columns = [
     title: 'Email',
     dataIndex: 'email',
     key: 'email',
+    sorter: (a, b) => {
+      return a.email.localeCompare(b.email);
+    },
   },
   {
     title: 'Nickname',
     dataIndex: 'nickname',
     key: 'nickname',
+    sorter: (a, b) => {
+      console.log(a);
+      a = a.nickname || '';
+      b = b.nickname || '';
+      return a.localeCompare(b);
+    },
   },
   {
     title: '삼대중량',

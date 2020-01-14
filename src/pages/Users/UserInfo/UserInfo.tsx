@@ -20,11 +20,17 @@ const columns = [
     title: 'Email',
     dataIndex: 'email',
     key: 'email',
+    sorter: (a, b) => {
+      return a.email.localeCompare(b.email);
+    },
   },
   {
     title: 'Nickname',
     dataIndex: 'nickname',
     key: 'nickname',
+    sorter: (a, b) => {
+      return a.nickname.localeCompare(b.nickname);
+    },
   },
   {
     title: '삼대중량',
@@ -40,6 +46,9 @@ const columns = [
     title: 'Role',
     dataIndex: 'role',
     key: 'role',
+    sorter: (a, b) => {
+      return a.role.localeCompare(b.role);
+    },
   },
 ];
 
