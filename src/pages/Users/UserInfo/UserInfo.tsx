@@ -64,11 +64,13 @@ export const UserInfo = () => {
   });
 
   return (
-    <Table
-      dataSource={dataSource}
-      columns={columns}
-      pagination={{ pageSize: 5 }}
-    />
+    <>
+      <Table
+        dataSource={dataSource}
+        columns={columns}
+        pagination={{ pageSize: 5 }}
+      />
+    </>
   );
 };
 
