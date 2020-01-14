@@ -38,6 +38,12 @@ export const GET_USERS = gql`
         id
         weekday
       }
+      ableDistricts {
+        district {
+          nameOfGu
+          nameOfDong
+        }
+      }
       createdAt
       messageToFriend
     }

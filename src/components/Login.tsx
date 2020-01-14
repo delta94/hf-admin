@@ -62,7 +62,8 @@ const Login = () => {
 
   if (loading) return <p>로딩 중...</p>;
   if (error) {
-    onLogout();
+    console.log('test', cookies['access-token']);
+    // onLogout();
     return (
       <LoginButton
         username={username}

@@ -9,7 +9,7 @@ const MainDiv = styled.div`
   font-weight: 500;
 `;
 
-const Table = styled.div`
+const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   && th,
@@ -55,40 +55,39 @@ function UserDetail({ match, history }) {
         </span>
         <Link to="/users">Back</Link>
       </div>
-      <div>
-        <Table>
-          <tbody>
-            <tr>
-              <td>id</td>
-              <td>{data.users[match.params.id].id}</td>
-            </tr>
-            <tr>
-              <td>email</td>
-              <td>{data.users[match.params.id].email}</td>
-            </tr>
-            <tr>
-              <td>nickname</td>
-              <td>{data.users[match.params.id].nickname}</td>
-            </tr>
-            <tr>
-              <td>motivations</td>
-              <td>{motivation}</td>
-            </tr>
-            <tr>
-              <td>weekdays</td>
-              <td>{weekdays}</td>
-            </tr>
-            <tr>
-              <td>createdAt</td>
-              <td>{createdAt}</td>
-            </tr>
-            <tr>
-              <td>messageToFriend:</td>
-              <td>{data.users[match.params.id].messageToFriend}</td>
-            </tr>
-          </tbody>
-        </Table>
-      </div>
+
+      <Table>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>{data.users[match.params.id].id}</td>
+          </tr>
+          <tr>
+            <td>email</td>
+            <td>{data.users[match.params.id].email}</td>
+          </tr>
+          <tr>
+            <td>nickname</td>
+            <td>{data.users[match.params.id].nickname}</td>
+          </tr>
+          <tr>
+            <td>motivations</td>
+            <td>{motivation}</td>
+          </tr>
+          <tr>
+            <td>weekdays</td>
+            <td>{weekdays}</td>
+          </tr>
+          <tr>
+            <td>createdAt</td>
+            <td>{createdAt}</td>
+          </tr>
+          <tr>
+            <td>messageToFriend:</td>
+            <td>{data.users[match.params.id].messageToFriend}</td>
+          </tr>
+        </tbody>
+      </Table>
     </MainDiv>
   );
 }

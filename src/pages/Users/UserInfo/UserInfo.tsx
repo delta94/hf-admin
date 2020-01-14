@@ -5,7 +5,7 @@ import { GET_USERS } from '../../../graphql/queries';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
-const Table = styled.div`
+const Table = styled.table`
   width: 100%;
   font-size: 1rem;
   border-collapse: collapse;
@@ -25,6 +25,8 @@ const UserInfo = () => {
 
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 :(</p>;
+
+  console.log(data.users[0]);
 
   return (
     <Table>
