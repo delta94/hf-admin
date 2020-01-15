@@ -86,7 +86,9 @@ const Dashboard = () => {
         <StyledCard title="총 멤버">
           <NumberOfUserText>{data.users.length}</NumberOfUserText>
         </StyledCard>
-        <StyledCard title="주간 신규 가입자"></StyledCard>
+        <StyledCard title="주간 신규 가입자">
+          <NumberOfUserText>0</NumberOfUserText>
+        </StyledCard>
         <StyledCard title="성비">
           <GENDER_CHART />
         </StyledCard>
