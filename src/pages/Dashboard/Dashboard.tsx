@@ -79,15 +79,6 @@ const Dashboard = () => {
     }),
   );
   let followingAverage = (numberOfFollowing / data.users.length).toFixed(2);
-  let numberOfFollowers = 0;
-  data.users.map((user) =>
-    user.followers.map((follower) => {
-      if (follower.nickname) {
-        numberOfFollowers += 1;
-      }
-    }),
-  );
-  let followerAverage = (numberOfFollowers / data.users.length).toFixed(2);
 
   return (
     <StyledContent>
@@ -110,11 +101,8 @@ const Dashboard = () => {
         <StyledCard title="Facebook">
           <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
         </StyledCard>
-        <StyledCard title="평균 팔로잉 수">
+        <StyledCard title="평균 팔로잉/팔로우 수">
           <NumberOfUserText>{followingAverage}</NumberOfUserText>
-        </StyledCard>
-        <StyledCard title="평균 팔로우 수">
-          <NumberOfUserText>{followerAverage}</NumberOfUserText>
         </StyledCard>
       </NumberOfUserDiv>
       <ChartDiv>

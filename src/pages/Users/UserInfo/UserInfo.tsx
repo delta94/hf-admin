@@ -1,26 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import 'antd/dist/antd.css';
-import { Table } from 'antd';
+import { Table, Tag } from 'antd';
 
 const columns = [
   {
     title: 'Id',
     dataIndex: 'id',
+    key: 'id',
     render: (text) => (
       <a style={{ cursor: 'pointer' }} href={`/users/${text}`}>
         {text}
       </a>
     ),
-    key: 'id',
+    sorter: (a, b) => a.id - b.id,
   },
   {
     title: 'Email',
     dataIndex: 'email',
     key: 'email',
     sorter: (a, b) => {
+      console.log(a);
       return a.email.localeCompare(b.email);
     },
   },
@@ -48,6 +49,14 @@ const columns = [
     key: 'role',
     sorter: (a, b) => {
       return a.role.localeCompare(b.role);
+    },
+    render: (role) => {
+      let color = role === 'USER' ? 'geekblue' : 'green';
+      return (
+        <Tag color={color} key={role}>
+          {role}
+        </Tag>
+      );
     },
   },
 ];
