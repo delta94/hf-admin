@@ -9,6 +9,7 @@ import { GENDER_CHART } from './chart/genderChart';
 import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
 import { MOTIVATION_CHART } from './chart/motivationChart';
 import { WEEK_CHART } from './chart/weekChart';
+import { District_Chart } from './chart/districtChart';
 
 // 평균 팔로잉, 팔로워
 
@@ -120,7 +121,9 @@ const Dashboard = () => {
           <NumberOfUserText></NumberOfUserText>
         </StyledCard>
       </NumberOfUserDiv>
-      <ChartDiv></ChartDiv>
+      <ChartDiv>
+        <District_Chart />
+      </ChartDiv>
     </StyledContent>
   );
 };
