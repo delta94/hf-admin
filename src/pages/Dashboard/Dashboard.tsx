@@ -70,6 +70,24 @@ const Dashboard = () => {
 
   let googleUser = data.users.filter((user) => user.provider === 'GOOGLE');
   let facebookUser = data.users.filter((user) => user.provider === 'FACEBOOK');
+  let numberOfFollowing = 0;
+  data.users.map((user) =>
+    user.following.map((follwing) => {
+      if (follwing.nickname) {
+        numberOfFollowing += 1;
+      }
+    }),
+  );
+  let followingAverage = (numberOfFollowing / data.users.length).toFixed(2);
+  let numberOfFollowers = 0;
+  data.users.map((user) =>
+    user.followers.map((follower) => {
+      if (follower.nickname) {
+        numberOfFollowers += 1;
+      }
+    }),
+  );
+  let followerAverage = (numberOfFollowers / data.users.length).toFixed(2);
 
   return (
     <StyledContent>
@@ -92,11 +110,11 @@ const Dashboard = () => {
         <StyledCard title="Facebook">
           <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
         </StyledCard>
-        <StyledCard title="평균 친구 수">
-          <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
+        <StyledCard title="평균 팔로잉 수">
+          <NumberOfUserText>{followingAverage}</NumberOfUserText>
         </StyledCard>
         <StyledCard title="평균 팔로우 수">
-          <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
+          <NumberOfUserText>{followerAverage}</NumberOfUserText>
         </StyledCard>
       </NumberOfUserDiv>
       <ChartDiv>
