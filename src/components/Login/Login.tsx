@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Button, Form } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_TOKEN } from '../graphql/queries';
+import { GET_TOKEN } from '../../graphql/queries';
 import { useCookies } from 'react-cookie';
 import LoginButton from './LoginButton';
 let query;

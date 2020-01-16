@@ -5,8 +5,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { Layout } from 'antd';
 import styled from 'styled-components';
 
-import Header from './components/Layout/Head';
-import Sidebar from './components/Layout/Sidebar';
+import Header from './components/Header/Head';
+import Sidebar from './components/SideBar/Sidebar';
 
 import Dashboard from './pages/Dashboard/Dashboard';
 import Users from './pages/Users';

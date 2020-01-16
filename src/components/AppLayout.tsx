@@ -3,8 +3,8 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import styled from 'styled-components';
 
-import Head from './Head';
-import Sidebar from './Sidebar';
+import Head from './Header/Head';
+import Sidebar from './SideBar/Sidebar';
 
 const { Content } = Layout;
 

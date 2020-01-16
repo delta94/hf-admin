@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../Login';
+import Login from '../Login/Login';
 import 'antd/dist/antd.css';
 
 import { Layout } from 'antd';
