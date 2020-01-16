@@ -14,27 +14,27 @@ export const District_Chart = () => {
 
   let gangnam = 0;
   let songpa = 0;
-  let bundang = 0;
+  let youngsan = 0;
 
   data.users.filter((user) =>
     user.ableDistricts.filter((ableDistrict) => {
       if (ableDistrict.district.nameOfGu === '강남구') {
         gangnam += 1;
       }
-      if (ableDistrict.district.nameOfGu === '분당구') {
+      if (ableDistrict.district.nameOfGu === '송파구') {
         songpa += 1;
       }
-      if (ableDistrict.district.nameOfGu === '송파구') {
-        bundang += 1;
+      if (ableDistrict.district.nameOfGu === '용산구') {
+        youngsan += 1;
       }
     }),
   );
 
   let pieData = {
-    labels: ['강남', '송파', '분당'],
+    labels: ['강남', '송파', '용산'],
     datasets: [
       {
-        data: [gangnam, songpa, bundang],
+        data: [gangnam, songpa, youngsan],
         backgroundColor: ['#bc5090', '#ef5675', '#ff764a'],
       },
     ],
@@ -50,7 +50,7 @@ export const District_Chart = () => {
           fontSize: 20,
         },
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
       }}
     />
   );

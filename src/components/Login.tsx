@@ -13,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(initIsLogin);
   const [cookies, setCookie, removeCookie] = useCookies(['name']);
+
   const { loading, error, data } = useQuery(GET_TOKEN, {
     variables: { ...query },
   });
@@ -48,6 +49,7 @@ const Login = () => {
   };
 
   const onCookie = (token) => {
+    localStorage.setItem('access-token', JSON.stringify(token));
     setCookie('access-token', token);
   };
 
@@ -60,7 +62,7 @@ const Login = () => {
 
   if (loading) return <p>로딩 중...</p>;
   if (error) {
-    console.log('test123', cookies['access-token']);
+    // console.log('test123', cookies['access-token']);
     return (
       <LoginButton
         username={username}
