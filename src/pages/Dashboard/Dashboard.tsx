@@ -11,8 +11,6 @@ import { MOTIVATION_CHART } from './chart/motivationChart';
 import { WEEK_CHART } from './chart/weekChart';
 import { District_Chart } from './chart/districtChart';
 
-// 평균 팔로잉, 팔로워
-
 const { Content } = Layout;
 
 const StyledContent = styled(Content)`

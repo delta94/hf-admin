@@ -82,3 +82,13 @@ export const GET_TOKEN = gql`
     }
   }
 `;
+
+export const CREATE_USER = gql`
+  mutation AddUser($email: String!, $password: String!) {
+    registerForTest(email: $email, password: $password) {
+      user {
+        email
+      }
+    }
+  }
+`;

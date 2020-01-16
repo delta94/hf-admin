@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import 'antd/dist/antd.css';
-import { Table, Tag } from 'antd';
+import { Table, Tag, Button } from 'antd';
+import UserAdd from '../UserAdd/UserAdd';
+import User from '..';
 
 const columns = [
   {
@@ -62,6 +64,7 @@ const columns = [
 ];
 
 export const UserInfo = () => {
+  const [addUser, setAddUSer] = useState(false);
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
@@ -88,6 +91,8 @@ export const UserInfo = () => {
         columns={columns}
         pagination={{ pageSize: 5 }}
       />
+      <Button onClick={() => setAddUSer(!addUser)}>Add User</Button>
+      {addUser ? <UserAdd /> : null}
     </>
   );
 };
