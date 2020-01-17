@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../graphql/queries';
 import 'antd/dist/antd.css';
-import { Table } from 'antd';
+import { Table, Divider } from 'antd';
 
 const columns = [
   {
@@ -45,6 +45,18 @@ const columns = [
     dataIndex: 'role',
     key: 'role',
   },
+  {
+    title: 'Action',
+    dataIndex: 'role',
+    key: 'action',
+    render: (text, record) => (
+      <span>
+        <a>Message {record.lastName}</a>
+        <Divider type="vertical" />
+        <a>Delete</a>
+      </span>
+    ),
+  },
 ];
 
 export const Chart = () => {
@@ -67,14 +79,11 @@ export const Chart = () => {
   });
 
   return (
-    <div style={{ width: '500px' }}>
-      <Table
-        dataSource={dataSource}
-        columns={columns}
-        pagination={{ pageSize: 5 }}
-      />
-      ,
-    </div>
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+      pagination={{ pageSize: 5 }}
+    />
   );
 };
 

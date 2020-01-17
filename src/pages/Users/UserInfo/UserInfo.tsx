@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import 'antd/dist/antd.css';
-import { Table, Tag, Button } from 'antd';
+import { Table, Tag, Button, Divider } from 'antd';
 import UserAdd from '../UserAdd/UserAdd';
-import User from '..';
 
 const columns = [
   {
@@ -58,6 +57,20 @@ const columns = [
         <Tag color={color} key={role}>
           {role}
         </Tag>
+      );
+    },
+  },
+  {
+    title: 'Action',
+    dataIndex: 'role',
+    key: 'action',
+    render: (text, record) => {
+      return (
+        <span>
+          <a>Message</a>
+          <Divider type="vertical" />
+          <a>Delete</a>
+        </span>
       );
     },
   },

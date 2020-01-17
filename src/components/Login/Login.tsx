@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
-import { Button, Form } from 'antd';
+import { Button, Form, Icon } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_TOKEN } from '../../graphql/queries';
 import { useCookies } from 'react-cookie';
@@ -86,6 +86,9 @@ const Login = () => {
               color: 'white',
             }}
           >
+            <span style={{ marginRight: '20px' }}>
+              <Icon type="message" />
+            </span>
             <span style={{ marginRight: '20px' }}>반갑습니다</span>
             <Button
               onClick={() => {

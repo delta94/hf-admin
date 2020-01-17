@@ -1,52 +1,10 @@
-import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { GET_USERS, CREATE_USER } from '../../graphql/queries';
+import React from 'react';
 
 import 'antd/dist/antd.css';
-import { Layout, Form, Input, Icon, Button } from 'antd';
-const { Content } = Layout;
+import { Layout } from 'antd';
 
 const Graph = () => {
-  const [createUser, { data }] = useMutation(CREATE_USER);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onChangeUsernmae = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const addUser = () => {
-    createUser({ variables: { email: username, password: password } });
-  };
-
-  return (
-    <div style={{ position: 'absolute', top: '200px' }}>
-      <Form>
-        <Input
-          prefix={<Icon type="user" />}
-          style={{ width: '150px', marginRight: '15px' }}
-          placeholder="Username"
-          value={username}
-          onChange={onChangeUsernmae}
-        />
-        <Input
-          prefix={<Icon type="lock" />}
-          style={{ width: '150px', marginRight: '15px' }}
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={onChangePassword}
-        />
-        <Button type="primary" size="large" onClick={() => addUser()}>
-          +
-        </Button>
-      </Form>
-    </div>
-  );
+  return <div>테스트</div>;
 };
 
 export default Graph;
