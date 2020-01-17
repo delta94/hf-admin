@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
-import { Button, Form, Icon } from 'antd';
+import { Button, Form } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_TOKEN } from '../../graphql/queries';
 import { useCookies } from 'react-cookie';
 import LoginButton from './LoginButton';
+
+import Message from '../Message/Message';
 let query;
 
 const Login = () => {
@@ -86,9 +88,7 @@ const Login = () => {
               color: 'white',
             }}
           >
-            <span style={{ marginRight: '20px' }}>
-              <Icon type="message" />
-            </span>
+            <Message />
             <span style={{ marginRight: '20px' }}>반갑습니다</span>
             <Button
               onClick={() => {

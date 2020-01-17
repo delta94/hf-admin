@@ -1,8 +1,6 @@
 import React from 'react';
-
 import 'antd/dist/antd.css';
-import { Layout, Dropdown, Menu, Button, Icon } from 'antd';
-
+import { Icon, Dropdown, Menu } from 'antd';
 const menu = (
   <Menu>
     <Menu.Item>
@@ -30,14 +28,15 @@ const menu = (
     </Menu.Item>
   </Menu>
 );
-const Graph = () => {
+
+const Message = () => {
   return (
-    <div>
+    <span style={{ marginRight: '80px', cursor: 'pointer' }}>
       <Dropdown overlay={menu}>
-        <Icon type="user" />
+        <Icon type="message" />
       </Dropdown>
-    </div>
+    </span>
   );
 };
 
-export default Graph;
+export default Message;
