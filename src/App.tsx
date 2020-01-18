@@ -34,7 +34,7 @@ const App = () => {
                 <Route exact path="/" component={Dashboard} />
                 <Route path="/users" component={Users} />
                 <Route exact path="/setting" component={Setting} />
-                <Route exact path="/graph" component={Graph} />
+                <Route path="/graph" component={Graph} />
                 <Route exact path="/chart" component={Chart} />
               </Switch>
             </Layout>

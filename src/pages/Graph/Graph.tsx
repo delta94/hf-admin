@@ -1,41 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
-import { Layout, Dropdown, Menu, Button, Icon } from 'antd';
 
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.alipay.com/"
-      >
-        1st menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        2nd menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-        3rd menu item
-      </a>
-    </Menu.Item>
-  </Menu>
-);
-const Graph = () => {
+import User from './User';
+import Room from './Room';
+
+export const Graph = ({ match }) => {
+  //   const [message, setMessage] = useState('');
+  //   const [friend, setFriend] = useState('');
+  //   const [messages, setMessages] = useState<any[]>([]);
+
+  //   useEffect(() => {
+  //     setFriend(friend);
+  //   }, [friend]);
+
+  //   console.log('test path', match);
+
+  //   const sendMessage = (event) => {
+  //     event.preventDefault();
+  //     messages.push(message);
+  //     setMessages([...messages]);
+  //     setMessage('');
+  //   };
+
   return (
     <div>
-      <Dropdown overlay={menu}>
-        <Icon type="user" />
-      </Dropdown>
+      <Route path={match.path} component={User} />
+      <Route path={`${match.path}/:id`} component={Room} />
     </div>
   );
 };
