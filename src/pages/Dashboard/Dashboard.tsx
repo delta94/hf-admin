@@ -14,48 +14,9 @@ import { District_Chart } from './chart/districtChart';
 const { Content } = Layout;
 
 const StyledContent = styled(Content)`
-  padding: 24px;
+  padding: 10px 24px;
   margin: 0;
-`;
-
-const NumberOfUserDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 35px;
-`;
-
-const StyledCard = styled(Card)`
-  width: 280px;
-  height: 230px;
-  text-align: center;
-`;
-
-const NumberOfUserText = styled.div`
-  vertical-align: middle;
-  margin: 30px 0;
-  height: 100%;
-  width: 100%;
-  font-size: 30px;
-`;
-
-const ChartDiv = styled.div`
-  display: flex;
-  background-color: #fff;
-  padding-top: 40px;
-  height: 500px;
-  width: 100%;
-  margin-bottom: 35px;
-`;
-
-const LevelOf3DaeDiv = styled.div`
-  height: 400px;
-  width: 48%;
-`;
-
-const MotivationDiv = styled.div`
-  height: 400px;
-  width: 48%;
+  overflow: scroll;
 `;
 
 const Dashboard = () => {
@@ -80,56 +41,107 @@ const Dashboard = () => {
 
   return (
     <StyledContent>
-      <NumberOfUserDiv>
-        <StyledCard title="총 멤버">
-          <NumberOfUserText>{data.users.length}</NumberOfUserText>
-        </StyledCard>
-        <StyledCard title="주간 신규 가입자">
-          <NumberOfUserText>0</NumberOfUserText>
-        </StyledCard>
-        <StyledCard title="성비">
-          <GENDER_CHART />
-        </StyledCard>
-      </NumberOfUserDiv>
-      <ChartDiv>
-        <WEEK_CHART />
-      </ChartDiv>
-      <NumberOfUserDiv>
-        <StyledCard title="Google">
-          <NumberOfUserText>{googleUser.length}</NumberOfUserText>
-        </StyledCard>
-        <StyledCard title="Facebook">
-          <NumberOfUserText>{facebookUser.length}</NumberOfUserText>
-        </StyledCard>
-        <StyledCard title="평균 팔로잉/팔로우 수">
-          <NumberOfUserText>{followingAverage}</NumberOfUserText>
-        </StyledCard>
-      </NumberOfUserDiv>
-      <ChartDiv>
-        <LevelOf3DaeDiv>
-          <LEVELOF3DAE_CHART />
-        </LevelOf3DaeDiv>
-        <MotivationDiv>
-          <MOTIVATION_CHART />
-        </MotivationDiv>
-      </ChartDiv>
-      <NumberOfUserDiv>
-        <StyledCard title="베스트 팔로우">
-          <NumberOfUserText></NumberOfUserText>
-        </StyledCard>
-        <StyledCard title="베스트 팔로잉">
-          <NumberOfUserText></NumberOfUserText>
-        </StyledCard>
-        <StyledCard title="베스트 지역">
-          <NumberOfUserText></NumberOfUserText>
-        </StyledCard>
-        <StyledCard title="워스트 지역">
-          <NumberOfUserText></NumberOfUserText>
-        </StyledCard>
-      </NumberOfUserDiv>
-      <ChartDiv>
-        <District_Chart />
-      </ChartDiv>
+      <h1>Dashboard</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div
+          style={{
+            backgroundColor: 'white',
+            width: '23%',
+            height: '100px',
+            border: '1px solid black',
+          }}
+        >
+          총유저
+        </div>
+        <div
+          style={{
+            backgroundColor: 'white',
+            width: '23%',
+            height: '100px',
+            border: '1px solid black',
+          }}
+        >
+          오늘 가입한 유저
+        </div>
+        <div
+          style={{
+            backgroundColor: 'white',
+            width: '23%',
+            height: '100px',
+            border: '1px solid black',
+          }}
+        >
+          평균 팔로우 수
+        </div>
+        <div
+          style={{
+            backgroundColor: 'white',
+            width: '23%',
+            height: '100px',
+            border: '1px solid black',
+          }}
+        >
+          성비 바 그래프(평균접속시간?)
+        </div>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div
+          style={{
+            backgroundColor: 'white',
+            marginTop: '20px',
+            width: '100%',
+            height: '200px',
+            border: '1px solid black',
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div
+            style={{
+              marginTop: '20px',
+              height: '80%',
+              width: '68%',
+              border: '1px  solid  black',
+            }}
+          >
+            오늘 가입한 유저 정보
+          </div>
+          <div
+            style={{
+              marginTop: '20px',
+              height: '80%',
+              width: '30%',
+              border: '1px  solid  black',
+            }}
+          >
+            오늘 가입한 유저의 지역 정보
+          </div>
+        </div>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div
+          style={{
+            backgroundColor: 'white',
+            marginTop: '20px',
+            width: '49%',
+            height: '200px',
+            border: '1px solid black',
+          }}
+        >
+          요일 별 사용자
+        </div>
+        <div
+          style={{
+            backgroundColor: 'white',
+            marginTop: '20px',
+            width: '49%',
+            height: '200px',
+            border: '1px solid black',
+          }}
+        >
+          사용자 동기
+        </div>
+      </div>
     </StyledContent>
   );
 };
