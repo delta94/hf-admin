@@ -7,8 +7,8 @@ import { Layout, Card, Icon } from 'antd';
 
 import { GENDER_CHART } from './chart/genderChart';
 import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
-import { MOTIVATION_CHART } from './chart/motivationChart';
 import { WEEK_CHART } from './chart/weekChart';
+import { MOTIVATION_CHART } from './chart/motivationChart';
 import { District_Chart } from './chart/districtChart';
 
 const { Content } = Layout;
@@ -17,6 +17,24 @@ const StyledContent = styled(Content)`
   padding: 10px 24px;
   margin: 0;
   overflow: scroll;
+`;
+
+const DashboardDiv1 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledCard = styled(Card)`
+  width: 23%;
+  height: 100px;
+  border-radius: 20px;
+`;
+
+const CardSpan = styled.span`
+  position: relative;
+  top: -12px;
+  color: white;
+  cursor: pointer;
 `;
 
 const Dashboard = () => {
@@ -28,7 +46,6 @@ const Dashboard = () => {
   if (error) return <p>오류 :(</p>;
 
   let googleUser = data.users.filter((user) => user.provider === 'GOOGLE');
-  let facebookUser = data.users.filter((user) => user.provider === 'FACEBOOK');
   let numberOfFollowing = 0;
   data.users.map((user) =>
     user.following.map((follwing) => {
@@ -37,19 +54,13 @@ const Dashboard = () => {
       }
     }),
   );
-  let followingAverage = (numberOfFollowing / data.users.length).toFixed(0);
+  let followingAverage = (numberOfFollowing / data.users.length).toFixed(2);
 
   return (
     <StyledContent>
       <h1>Dashboard</h1>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          color: 'white',
-        }}
-      >
-        <Card
+      <DashboardDiv1>
+        <StyledCard
           title={
             <span style={{ color: 'white' }}>
               {googleUser.length} Total Users <Icon type="usergroup-add" />
@@ -57,48 +68,27 @@ const Dashboard = () => {
           }
           style={{
             backgroundColor: 'rgb(47 125 247)',
-            width: '23%',
-            height: '100px',
-            // border: '1px solid black',
-            borderRadius: '20px',
           }}
         >
-          <span
-            style={{
-              position: 'relative',
-              top: '-12px',
-              color: 'white',
-              cursor: 'pointer',
-            }}
-          >
-            view detail
-          </span>
-        </Card>
-        <Card
+          <CardSpan>
+            <a href="/users" style={{ textDecoration: 'none', color: 'white' }}>
+              view detail
+            </a>
+          </CardSpan>
+        </StyledCard>
+        <StyledCard
           title={
             <span style={{ color: 'white' }}>
-              0 Today's Users <Icon type="user" />
+              Best Users <Icon type="crown" theme="twoTone" />
             </span>
           }
           style={{
             backgroundColor: 'rgb(246 194 68)',
-            width: '23%',
-            height: '100px',
-            borderRadius: '20px',
           }}
         >
-          <span
-            style={{
-              position: 'relative',
-              top: '-12px',
-              color: 'white',
-              cursor: 'pointer',
-            }}
-          >
-            view detail
-          </span>
-        </Card>
-        <Card
+          <CardSpan>view detail</CardSpan>
+        </StyledCard>
+        <StyledCard
           title={
             <span style={{ color: 'white' }}>
               {followingAverage} Avg Followers{' '}
@@ -107,23 +97,11 @@ const Dashboard = () => {
           }
           style={{
             backgroundColor: 'rgb(83 164 81)',
-            width: '23%',
-            height: '100px',
-            borderRadius: '20px',
           }}
         >
-          <span
-            style={{
-              position: 'relative',
-              top: '-12px',
-              color: 'white',
-              cursor: 'pointer',
-            }}
-          >
-            view detail
-          </span>
-        </Card>
-        <Card
+          <CardSpan>view detail</CardSpan>
+        </StyledCard>
+        <StyledCard
           title={
             <span style={{ color: 'white' }}>
               Gender graph <Icon type="bar-chart" />
@@ -131,23 +109,11 @@ const Dashboard = () => {
           }
           style={{
             backgroundColor: 'rgb(203 68 75)',
-            width: '23%',
-            height: '100px',
-            borderRadius: '20px',
           }}
         >
-          <span
-            style={{
-              position: 'relative',
-              top: '-12px',
-              color: 'white',
-              cursor: 'pointer',
-            }}
-          >
-            view detail
-          </span>
-        </Card>
-      </div>
+          <CardSpan>view detail</CardSpan>
+        </StyledCard>
+      </DashboardDiv1>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div
           style={{
