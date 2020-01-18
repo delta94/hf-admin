@@ -80,7 +80,7 @@ export const WEEK_CHART = () => {
         },
         title: {
           display: true,
-          text: '운동 가능한 날',
+          text: '요일별 사용빈도',
           fontSize: 20,
         },
         responsive: true,

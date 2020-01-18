@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../graphql/queries';
 import 'antd/dist/antd.css';
 import styled from 'styled-components';
-import { Layout, Card } from 'antd';
+import { Layout, Card, Icon } from 'antd';
 
 import { GENDER_CHART } from './chart/genderChart';
 import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
@@ -37,52 +37,116 @@ const Dashboard = () => {
       }
     }),
   );
-  let followingAverage = (numberOfFollowing / data.users.length).toFixed(2);
+  let followingAverage = (numberOfFollowing / data.users.length).toFixed(0);
 
   return (
     <StyledContent>
       <h1>Dashboard</h1>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          color: 'white',
+        }}
+      >
+        <Card
+          title={
+            <span style={{ color: 'white' }}>
+              {googleUser.length} Total Users <Icon type="usergroup-add" />
+            </span>
+          }
           style={{
-            backgroundColor: 'white',
+            backgroundColor: 'rgb(47 125 247)',
             width: '23%',
             height: '100px',
-            border: '1px solid black',
+            // border: '1px solid black',
+            borderRadius: '20px',
           }}
         >
-          총유저
-        </div>
-        <div
+          <span
+            style={{
+              position: 'relative',
+              top: '-12px',
+              color: 'white',
+              cursor: 'pointer',
+            }}
+          >
+            view detail
+          </span>
+        </Card>
+        <Card
+          title={
+            <span style={{ color: 'white' }}>
+              0 Today's Users <Icon type="user" />
+            </span>
+          }
           style={{
-            backgroundColor: 'white',
+            backgroundColor: 'rgb(246 194 68)',
             width: '23%',
             height: '100px',
-            border: '1px solid black',
+            borderRadius: '20px',
           }}
         >
-          오늘 가입한 유저
-        </div>
-        <div
+          <span
+            style={{
+              position: 'relative',
+              top: '-12px',
+              color: 'white',
+              cursor: 'pointer',
+            }}
+          >
+            view detail
+          </span>
+        </Card>
+        <Card
+          title={
+            <span style={{ color: 'white' }}>
+              {followingAverage} Avg Followers{' '}
+              <Icon type="heart" theme="twoTone" twoToneColor="#eb2f96" />
+            </span>
+          }
           style={{
-            backgroundColor: 'white',
+            backgroundColor: 'rgb(83 164 81)',
             width: '23%',
             height: '100px',
-            border: '1px solid black',
+            borderRadius: '20px',
           }}
         >
-          평균 팔로우 수
-        </div>
-        <div
+          <span
+            style={{
+              position: 'relative',
+              top: '-12px',
+              color: 'white',
+              cursor: 'pointer',
+            }}
+          >
+            view detail
+          </span>
+        </Card>
+        <Card
+          title={
+            <span style={{ color: 'white' }}>
+              Gender graph <Icon type="bar-chart" />
+            </span>
+          }
           style={{
-            backgroundColor: 'white',
+            backgroundColor: 'rgb(203 68 75)',
             width: '23%',
             height: '100px',
-            border: '1px solid black',
+            borderRadius: '20px',
           }}
         >
-          성비 바 그래프(평균접속시간?)
-        </div>
+          <span
+            style={{
+              position: 'relative',
+              top: '-12px',
+              color: 'white',
+              cursor: 'pointer',
+            }}
+          >
+            view detail
+          </span>
+        </Card>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div
@@ -125,10 +189,9 @@ const Dashboard = () => {
             marginTop: '20px',
             width: '49%',
             height: '200px',
-            border: '1px solid black',
           }}
         >
-          요일 별 사용자
+          <WEEK_CHART />
         </div>
         <div
           style={{
@@ -136,10 +199,9 @@ const Dashboard = () => {
             marginTop: '20px',
             width: '49%',
             height: '200px',
-            border: '1px solid black',
           }}
         >
-          사용자 동기
+          <MOTIVATION_CHART />
         </div>
       </div>
     </StyledContent>
