@@ -102,7 +102,7 @@ export const UserInfo = () => {
       <Table
         dataSource={dataSource}
         columns={columns}
-        pagination={{ pageSize: 5 }}
+        pagination={{ pageSize: 8 }}
       />
       <Button onClick={() => setAddUSer(!addUser)}>Add User</Button>
       {addUser ? <UserAdd /> : null}

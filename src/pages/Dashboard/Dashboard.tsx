@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../graphql/queries';
 import 'antd/dist/antd.css';
 import styled from 'styled-components';
-import { Layout, Card, Icon } from 'antd';
+import { Layout, Card, Icon, Table } from 'antd';
 
 import { GENDER_CHART } from './chart/genderChart';
 import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
@@ -134,7 +134,7 @@ const Dashboard = () => {
               border: '1px  solid  black',
             }}
           >
-            오늘 가입한 유저 정보
+            <Table />
           </div>
           <div
             style={{
@@ -144,7 +144,7 @@ const Dashboard = () => {
               border: '1px  solid  black',
             }}
           >
-            오늘 가입한 유저의 지역 정보
+            <District_Chart />
           </div>
         </div>
       </div>
