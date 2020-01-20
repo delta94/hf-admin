@@ -46,6 +46,7 @@ const UserDiv = styled.div`
   margin-top: 20px;
   height: 80%;
   width: 68%;
+  border-radius: 20px;
   overflow: scroll;
 `;
 
@@ -82,7 +83,7 @@ const TodayUser = () => {
 
   return (
     <OuterDiv>
-      <UserDiv>
+      <UserDiv style={{ backgroundColor: 'white' }}>
         <span style={{ position: 'relative', left: '10px', fontSize: '20px' }}>
           New Users: {users.length}
         </span>

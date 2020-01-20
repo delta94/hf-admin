@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { SET_CHAT_FRIEND, GET_CHAT_FRIEND } from '../../graphql/queries';
+
 const User = () => {
   const [friend, setFriend] = useState('');
 
