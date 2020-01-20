@@ -38,13 +38,12 @@ export const GET_USERS = gql`
         id
         weekday
       }
-      following {
-        nickname
-      }
       followers {
-        nickname
+        id
       }
-
+      following {
+        id
+      }
       ableDistricts {
         district {
           nameOfGu

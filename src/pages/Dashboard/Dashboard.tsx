@@ -26,9 +26,9 @@ const Dashboard = () => {
   });
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 :(</p>;
+
   return (
     <StyledContent>
-      {/* <h1>Dashboard</h1> */}
       <Cards />
       <TodayUser />
 

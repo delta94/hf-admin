@@ -36,11 +36,11 @@ const Cards = () => {
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 :(</p>;
 
-  let googleUser = data.users.filter((user) => user.provider === 'GOOGLE');
+  let totalUser = data.users.length;
   let numberOfFollowing = 0;
   data.users.map((user) =>
     user.following.map((follwing) => {
-      if (follwing.nickname) {
+      if (follwing.id) {
         numberOfFollowing += 1;
       }
     }),
@@ -53,7 +53,7 @@ const Cards = () => {
         <StyledCard
           title={
             <span style={{ color: 'white' }}>
-              {googleUser.length} Total Users <Icon type="usergroup-add" />
+              {totalUser} Total Users <Icon type="usergroup-add" />
             </span>
           }
           style={{
@@ -100,8 +100,8 @@ const Cards = () => {
               backgroundColor: 'rgb(152 191 144)',
             }}
           >
-            <div>총 팔로잉 수: {numberOfFollowing}</div>
-            <div>총 유저 수: {googleUser.length}</div>
+            <div>총 팔로잉 수: </div>
+            <div>총 유저 수: </div>
             <br />
             <CardSpan onClick={() => setAverage(true)}>back</CardSpan>
           </StyledCard>

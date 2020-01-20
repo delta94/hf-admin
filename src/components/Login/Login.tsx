@@ -51,7 +51,6 @@ const Login = () => {
   };
 
   const onCookie = (token) => {
-    localStorage.setItem('access-token', JSON.stringify(token));
     setCookie('access-token', token);
   };
 
