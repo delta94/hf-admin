@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { useQuery } from '@apollo/react-hooks';
+import { GET_USERS } from '../../graphql/queries';
 import 'antd/dist/antd.css';
 import styled from 'styled-components';
 import { Layout } from 'antd';
@@ -20,6 +21,11 @@ const StyledContent = styled(Content)`
 `;
 
 const Dashboard = () => {
+  const { loading, error, data } = useQuery(GET_USERS, {
+    fetchPolicy: 'network-only',
+  });
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>오류 :(</p>;
   return (
     <StyledContent>
       <h1>Dashboard</h1>
