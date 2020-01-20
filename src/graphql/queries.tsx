@@ -91,3 +91,21 @@ export const CREATE_USER = gql`
     }
   }
 `;
+
+export const SET_CHAT_FRIEND = gql`
+  mutation SetChatFriend($id: String!, $nickname: String!) {
+    setChatFriend(id: $id, nickname: $nickname) @client {
+      id
+      nickname
+    }
+  }
+`;
+
+export const GET_CHAT_FRIEND = gql`
+  query ChatFriend {
+    chatFriend @client {
+      id
+      nickname
+    }
+  }
+`;
