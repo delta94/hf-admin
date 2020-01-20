@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 
 import 'antd/dist/antd.css';
-import { Table, Tag, Button, Divider, Card } from 'antd';
+import { Table } from 'antd';
 
 const columns = [
   {

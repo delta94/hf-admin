@@ -1,9 +1,19 @@
 import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_USERS } from '../../../graphql/queries';
 import { District_Chart } from '../chart/districtChart';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import { Table } from 'antd';
+
+import { todayDate } from '../../../utils/todayDate';
+
 const columns = [
+  {
+    title: 'Picture',
+    dataIndex: 'picture',
+    key: 'picture',
+  },
   {
     title: 'Email',
     dataIndex: 'email',
@@ -45,13 +55,38 @@ const ChartDiv = styled.div`
 `;
 
 const TodayUser = () => {
+  const { loading, error, data } = useQuery(GET_USERS, {
+    fetchPolicy: 'network-only',
+  });
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>오류 :(</p>;
+
+  let users = data.users.map((user) => {
+    if (user.createdAt.slice(0, 10) === todayDate())
+      return {
+        id: user.id,
+        email: user.email,
+        nickname: user.nickname,
+        createdAt: user.createdAt.slice(0, 10),
+      };
+  });
+
+  let dataSource = users.map((user, i) => {
+    return {
+      key: user.id,
+      email: user.email,
+      nickname: user.nickname,
+      createdAt: user.createdAt.slice(0, 10),
+    };
+  });
+
   return (
     <OuterDiv>
       <UserDiv>
         <span style={{ position: 'relative', left: '10px', fontSize: '20px' }}>
-          Today's Users
+          New Users: {users.length}
         </span>
-        <Table columns={columns} />
+        <Table columns={columns} dataSource={dataSource} />
       </UserDiv>
       <ChartDiv>
         <District_Chart />
