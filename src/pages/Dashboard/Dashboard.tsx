@@ -6,11 +6,11 @@ import styled from 'styled-components';
 import { Layout } from 'antd';
 
 import Cards from './Cards/Crads';
+import TodayUser from './TodayUser/TodayUser';
 
 import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
 import { WEEK_CHART } from './chart/weekChart';
 import { MOTIVATION_CHART } from './chart/motivationChart';
-import { District_Chart } from './chart/districtChart';
 
 const { Content } = Layout;
 
@@ -28,39 +28,10 @@ const Dashboard = () => {
   if (error) return <p>오류 :(</p>;
   return (
     <StyledContent>
-      <h1>Dashboard</h1>
+      {/* <h1>Dashboard</h1> */}
       <Cards />
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div
-          style={{
-            width: '100%',
-            height: '200px',
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
-          <div
-            style={{
-              marginTop: '20px',
-              height: '80%',
-              width: '68%',
-              border: '1px  solid  black',
-            }}
-          >
-            오늘 가입한 유저 정보 (테이블 형태)
-          </div>
-          <div
-            style={{
-              // marginTop: '20px',
-              height: '90%',
-              width: '30%',
-              // border: '1px  solid  black',
-            }}
-          >
-            <District_Chart />
-          </div>
-        </div>
-      </div>
+      <TodayUser />
+
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div
           style={{
