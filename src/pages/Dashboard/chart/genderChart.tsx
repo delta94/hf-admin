@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
-import { Pie } from 'react-chartjs-2';
+import { HorizontalBar } from 'react-chartjs-2';
 
 export const GENDER_CHART = () => {
   const { loading, error, data } = useQuery(GET_USERS, {
@@ -24,9 +24,13 @@ export const GENDER_CHART = () => {
   };
 
   return (
-    <Pie
+    <HorizontalBar
       data={pieData}
       options={{
+        legend: {
+          display: false,
+          position: 'top',
+        },
         responsive: true,
         maintainAspectRatio: true,
       }}

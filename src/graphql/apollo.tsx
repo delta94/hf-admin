@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 import { WebSocketLink } from 'apollo-link-ws';
 
 const httpLink = createHttpLink({
-  uri: 'https://api.healthfriend.club/graphql',
+  uri: 'http://localhost:4000/graphql',
   credentials: 'include',
 });
 // const httpLink = new HttpLink({
