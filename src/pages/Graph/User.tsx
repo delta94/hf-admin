@@ -1,61 +1,23 @@
-import React, { useState } from 'react';
-import { Route, Link } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { SET_CHAT_FRIEND, GET_CHAT_FRIEND } from '../../graphql/queries';
+import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_USERS } from '../../graphql/queries';
+import { Link } from 'react-router-dom';
 
 const User = () => {
-  const [friend, setFriend] = useState('');
+  const { loading, error, data } = useQuery(GET_USERS, {
+    fetchPolicy: 'network-only',
+  });
 
-  const onFrined = (e) => {
-    setFriend(e.name);
-    console.log(e.name);
-  };
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>오류 :(</p>;
 
   return (
     <div>
-      <div>
-        <Link
-          to={`/graph/${friend}`}
-          style={{ cursor: 'pointer', marginRight: '20px' }}
-          name="user1"
-          onClick={() => {
-            setFriend('user1');
-            console.log(friend);
-          }}
-        >
-          user1
-        </Link>
-        <Link
-          to={`/graph/${friend}`}
-          style={{ cursor: 'pointer', marginRight: '20px' }}
-          onClick={() => {
-            setFriend('user2');
-            console.log(friend);
-          }}
-        >
-          user2
-        </Link>
-        <Link
-          to={`/graph/${friend}`}
-          style={{ cursor: 'pointer', marginRight: '20px' }}
-          onClick={() => {
-            setFriend('user3');
-            console.log(friend);
-          }}
-        >
-          user3
-        </Link>
-        <Link
-          to={`/graph/${friend}`}
-          style={{ cursor: 'pointer', marginRight: '20px' }}
-          onClick={() => {
-            setFriend('user4');
-            console.log(friend);
-          }}
-        >
-          user4
-        </Link>
-      </div>
+      {data.users.map((user) => (
+        <li key={`${user.id}`}>
+          <Link to={`/graph/${user.nickname}`}>{user.nickname}</Link>
+        </li>
+      ))}
     </div>
   );
 };

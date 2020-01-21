@@ -31,7 +31,6 @@ const Dashboard = () => {
     <StyledContent>
       <Cards />
       <TodayUser />
-
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div
           style={{

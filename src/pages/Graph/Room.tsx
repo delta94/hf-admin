@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 const Room = ({ match }) => {
+  const [room, setRoom] = useState(match.params.id);
   const [message, setMessage] = useState('');
-
   const [messages, setMessages] = useState<any[]>([]);
-
-  useEffect(() => {}, [messages]);
 
   const sendMessage = (event) => {
     event.preventDefault();
@@ -15,6 +13,7 @@ const Room = ({ match }) => {
   };
   return (
     <div>
+      <Link to="/graph">back</Link>
       <div
         style={{
           width: '500px',

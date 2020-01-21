@@ -25,7 +25,7 @@ const wsLink = new WebSocketLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = Cookies.get('admin-token');
+  const token = Cookies.get('access-token');
 
   return {
     headers: {
@@ -48,7 +48,7 @@ const authLink = setContext((_, { headers }) => {
 // );
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: authLink.concat(httpLink).concat(wsLink),
   cache: new InMemoryCache(),
 });
 
