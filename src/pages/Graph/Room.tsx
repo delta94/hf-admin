@@ -47,19 +47,15 @@ const Room = ({ match }) => {
     .join(',')
     .replace(regExp, '');
   chatClient.disconnect();
-
   chatClient.setUser(
     {
       id: 'wispy-scene-2',
-      name: `Wispy+scene`,
+      name: `${myEmail}`,
       image:
         'https://getstream.io/random_svg/?id=wispy-scene-2&name=Wispy+scene',
     },
     userToken,
   );
-
-  // 방을 공유해야 하는 데 공유하는 방의 주소를 어떻게 할 것인가?
-  // 1. 서로의 이메일을 합성한다.
 
   const channel = chatClient.channel('messaging', `${room}`, {
     image:
