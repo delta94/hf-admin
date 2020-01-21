@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { CREATE_USER } from '../../../graphql/queries';
 
 import 'antd/dist/antd.css';
-import { Layout, Form, Input, Icon, Button } from 'antd';
+import { Form, Input, Icon, Button } from 'antd';
 
 const Graph = () => {
   const [createUser, { data }] = useMutation(CREATE_USER);

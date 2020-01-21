@@ -62,30 +62,24 @@ const TodayUser = () => {
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 :(</p>;
 
-  let users = data.users.map((user) => {
-    if (user.createdAt.slice(0, 10) === todayDate())
-      return {
-        id: user.id,
-        email: user.email,
-        nickname: user.nickname,
-        createdAt: user.createdAt.slice(0, 10),
-      };
-  });
-
-  let dataSource = users.map((user, i) => {
-    return {
-      key: user.id,
-      email: user.email,
-      nickname: user.nickname,
-      createdAt: user.createdAt.slice(0, 10),
-    };
-  });
+  let dataSource = data.users
+    .map((user) => {
+      if (user.createdAt.slice(0, 10) === todayDate()) {
+        return {
+          id: user.id,
+          email: user.email,
+          nickname: user.nickname,
+          createdAt: user.createdAt.slice(0, 10),
+        };
+      } else return null;
+    })
+    .filter((user) => user);
 
   return (
     <OuterDiv>
       <UserDiv style={{ backgroundColor: 'white' }}>
         <span style={{ position: 'relative', left: '10px', fontSize: '20px' }}>
-          New Users: {users.length}
+          New Users: {dataSource.length}
         </span>
         <Table columns={columns} dataSource={dataSource} />
       </UserDiv>
