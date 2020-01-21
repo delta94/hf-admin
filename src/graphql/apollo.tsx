@@ -6,7 +6,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 // import { getMainDefinition } from 'apollo-utilities';
 import Cookies from 'js-cookie';
 
-import { WebSocketLink } from 'apollo-link-ws';
+// import { WebSocketLink } from 'apollo-link-ws';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -17,12 +17,12 @@ const httpLink = createHttpLink({
 //   credentials: 'include',
 // });
 
-const wsLink = new WebSocketLink({
-  uri: `wss://api.healthfriend.club/graphql`,
-  options: {
-    reconnect: true,
-  },
-});
+// const wsLink = new WebSocketLink({
+//   uri: `wss://api.healthfriend.club/graphql`,
+//   options: {
+//     reconnect: true,
+//   },
+// });
 
 const authLink = setContext((_, { headers }) => {
   const token = Cookies.get('access-token');
@@ -48,7 +48,7 @@ const authLink = setContext((_, { headers }) => {
 // );
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink).concat(wsLink),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
