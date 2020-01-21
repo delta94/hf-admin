@@ -17,12 +17,12 @@ const httpLink = createHttpLink({
 //   credentials: 'include',
 // });
 
-const wsLink = new WebSocketLink({
-  uri: `wss://api.healthfriend.club/graphql`,
-  options: {
-    reconnect: true,
-  },
-});
+// const wsLink = new WebSocketLink({
+//   uri: `wss://api.healthfriend.club/graphql`,
+//   options: {
+//     reconnect: true,
+//   },
+// });
 
 const authLink = setContext((_, { headers }) => {
   const token = Cookies.get('access-token');
@@ -48,7 +48,7 @@ const authLink = setContext((_, { headers }) => {
 // );
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink).concat(wsLink),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

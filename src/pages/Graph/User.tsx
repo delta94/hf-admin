@@ -13,9 +13,9 @@ const User = () => {
 
   return (
     <div>
-      {data.users.map((user) => (
+      {data.users.map((user, i) => (
         <li key={`${user.id}`}>
-          <Link to={`/graph/${user.nickname}`}>{user.nickname}</Link>
+          <Link to={`/graph/${i}`}>{user.nickname}</Link>
         </li>
       ))}
     </div>
