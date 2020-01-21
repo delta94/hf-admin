@@ -66,7 +66,7 @@ const TodayUser = () => {
     .map((user) => {
       if (user.createdAt.slice(0, 10) === todayDate()) {
         return {
-          id: user.id,
+          key: user.id,
           email: user.email,
           nickname: user.nickname,
           createdAt: user.createdAt.slice(0, 10),

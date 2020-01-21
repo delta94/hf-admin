@@ -45,13 +45,13 @@ const Login = () => {
   };
 
   const onLogout = () => {
-    removeCookie('access-token');
+    removeCookie('admin-token');
     setIsLogin(false);
     window.location.reload();
   };
 
   const onCookie = (token) => {
-    setCookie('access-token', token);
+    setCookie('admin-token', token);
   };
 
   if (data) {
@@ -77,7 +77,7 @@ const Login = () => {
 
   return (
     <>
-      {isLogin && cookies['access-token'] ? (
+      {isLogin && cookies['admin-token'] ? (
         <>
           <Form
             style={{

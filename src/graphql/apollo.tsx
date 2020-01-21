@@ -25,7 +25,7 @@ const wsLink = new WebSocketLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = Cookies.get('access-token');
+  const token = Cookies.get('admin-token');
 
   return {
     headers: {
