@@ -6,19 +6,20 @@ import {
   Thread,
   Window,
 } from 'stream-chat-react';
-import { API_KEY, TOKEN } from '../../config/config';
+import { API_KEY, TOKEN, SECRET } from '../../config/config';
 import { MessageList, MessageInput } from 'stream-chat-react';
 import { StreamChat } from 'stream-chat';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS, GET_USERINFO } from '../../graphql/queries';
 import 'antd/dist/antd.css';
-import { Icon } from 'antd';
+import stream from 'getstream';
 
 import 'stream-chat-react/dist/css/index.css';
 
 const chatClient = new StreamChat(API_KEY);
-
+const client = stream.connect('7gfp3v3jzxev', null, '67968');
 const userToken = TOKEN;
+client.apiSecret = SECRET;
 
 const Room = ({ match }) => {
   const { loading, error, data } = useQuery(GET_USERS, {
@@ -46,29 +47,22 @@ const Room = ({ match }) => {
     .sort()
     .join(',')
     .replace(regExp, '');
+
   chatClient.disconnect();
   chatClient.setUser(
     {
-      id: 'wispy-scene-2',
-      name: `${myEmail}`,
-      image:
-        'https://getstream.io/random_svg/?id=wispy-scene-2&name=Wispy+scene',
+      id: 'floral-leaf-9',
+      name: myEmail,
     },
     userToken,
   );
 
   const channel = chatClient.channel('messaging', `${room}`, {
-    image:
-      'https://cdn.chrisshort.net/testing-certificate-chains-in-go/GOPHER_MIC_DROP.png',
     name: `${nickname}`,
   });
+
   return (
     <div>
-      <Icon
-        style={{ fontSize: '50px', color: '#08c' }}
-        type="message"
-        theme="twoTone"
-      />
       <Chat client={chatClient} theme={'messaging light'}>
         <Channel channel={channel}>
           <div
