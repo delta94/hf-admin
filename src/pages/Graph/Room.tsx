@@ -17,9 +17,9 @@ import stream from 'getstream';
 import 'stream-chat-react/dist/css/index.css';
 
 const chatClient = new StreamChat(API_KEY);
-const client = stream.connect('7gfp3v3jzxev', null, '67968');
+// const client = stream.connect('7gfp3v3jzxev', null, '67968');
 const userToken = TOKEN;
-client.apiSecret = SECRET;
+// client.apiSecret = SECRET;
 
 const Room = ({ match }) => {
   const { loading, error, data } = useQuery(GET_USERS, {
