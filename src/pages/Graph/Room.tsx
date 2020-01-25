@@ -12,13 +12,16 @@ import { StreamChat } from 'stream-chat';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS, GET_USERINFO } from '../../graphql/queries';
 import 'antd/dist/antd.css';
-import stream from 'getstream';
+// import stream from 'getstream';
 
+// import Cookies from 'js-cookie';
+// const token = Cookies.get('stream-chat-token');
 import 'stream-chat-react/dist/css/index.css';
 
 const chatClient = new StreamChat(API_KEY);
 // const client = stream.connect('7gfp3v3jzxev', null, '67968');
 const userToken = TOKEN;
+
 // client.apiSecret = SECRET;
 
 const Room = ({ match }) => {
@@ -48,11 +51,14 @@ const Room = ({ match }) => {
     .join(',')
     .replace(regExp, '');
 
+  // const token = Cookies.get('access-token');
+  // console.log('test: ', token);
   chatClient.disconnect();
   chatClient.setUser(
     {
       id: 'floral-leaf-9',
-      name: myEmail,
+      // id: dataMe.me.email,
+      email: myEmail,
     },
     userToken,
   );

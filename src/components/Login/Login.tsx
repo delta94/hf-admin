@@ -99,13 +99,18 @@ const Login = () => {
           </Form>
         </>
       ) : (
-        <LoginButton
-          username={username}
-          onChangeUsernmae={onChangeUsernmae}
-          password={password}
-          onChangePassword={onChangePassword}
-          onLogin={onLogin}
-        />
+        <>
+          {/* <Button>
+            <a href="http://localhost:4000/auth/google"></a>
+          </Button> */}
+          <LoginButton
+            username={username}
+            onChangeUsernmae={onChangeUsernmae}
+            password={password}
+            onChangePassword={onChangePassword}
+            onLogin={onLogin}
+          />
+        </>
       )}
     </>
   );
