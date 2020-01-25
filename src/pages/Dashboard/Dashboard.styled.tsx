@@ -10,6 +10,7 @@ export const StyledContent = styled(Content)`
   overflow: scroll;
 `;
 
+// cards
 export const DashboardDiv1 = styled.div`
   display: flex;
   justify-content: space-between;
@@ -27,4 +28,26 @@ export const CardSpan = styled.span`
   top: -12px;
   color: white;
   cursor: pointer;
+`;
+
+// todayuser
+
+export const OuterDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 240px;
+`;
+
+export const UserDiv = styled.div`
+  margin-top: 20px;
+  height: 80%;
+  width: 68%;
+  border-radius: 20px;
+  overflow: scroll;
+`;
+
+export const ChartDiv = styled.div`
+  height: 90%;
+  width: 30%;
 `;
