@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import 'antd/dist/antd.css';
@@ -6,10 +7,16 @@ import { Table, Tag, Button, Divider, Input, Icon } from 'antd';
 import Highlighter from 'react-highlight-words';
 import UserAdd from '../UserAdd/UserAdd';
 
+import Room2 from '../../Graph/Room2';
+
+// message 방을 집어 넣어야 함
+
 export const UserInfo = () => {
   const [addUser, setAddUSer] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
+
+  const [message, setMessage] = useState(null);
 
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
@@ -120,9 +127,6 @@ export const UserInfo = () => {
       title: 'Nickname',
       dataIndex: 'nickname',
       key: 'nickname',
-      // sorter: (a, b) => {
-      //   return a.nickname.localeCompare(b.nickname);
-      // },
       ...getColumnSearchProps('nickname'),
     },
     {
@@ -158,14 +162,15 @@ export const UserInfo = () => {
       render: (text, record) => {
         return (
           <span>
-            <a>Message</a>
-            <Divider type="vertical" />
-            <a>Delete</a>
+            <a onClick={() => setMessage(record.id)}>Message</a>
+            {/* <Divider type="vertical" />
+            <a>Delete</a> */}
           </span>
         );
       },
     },
   ];
+
   return (
     <>
       <Table
@@ -175,6 +180,7 @@ export const UserInfo = () => {
       />
       <Button onClick={() => setAddUSer(!addUser)}>Add User</Button>
       {addUser ? <UserAdd /> : null}
+      {message ? <Room2 room={message} /> : null}
     </>
   );
 };

@@ -7,7 +7,7 @@ import { useCookies } from 'react-cookie';
 
 import LoginButton from './LoginButton';
 
-import Alert from '../Alert/Alert';
+import Menu from '../Menu';
 let query;
 
 const Login = () => {
@@ -87,7 +87,7 @@ const Login = () => {
               color: 'white',
             }}
           >
-            <Alert />
+            <Menu />
 
             <Button
               onClick={() => {
