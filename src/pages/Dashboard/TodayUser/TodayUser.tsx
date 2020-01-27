@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import { District_Chart } from '../chart/districtChart';
@@ -8,32 +8,7 @@ import { Table } from 'antd';
 
 import { todayDate } from '../../../utils/todayDate';
 
-const columns = [
-  {
-    title: 'Picture',
-    dataIndex: 'picture',
-    key: 'picture',
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
-  },
-  { title: 'Nickname', dataIndex: 'nickname', key: 'nickname' },
-  { title: 'CreatedAt', dataIndex: 'createdAt', key: 'createdAt' },
-  {
-    title: 'Action',
-    dataIndex: 'Action',
-    key: 'Action',
-    render: (text, record) => {
-      return (
-        <span>
-          <a>Message</a>
-        </span>
-      );
-    },
-  },
-];
+import Message from '../../../components/Message/Message';
 
 const OuterDiv = styled.div`
   display: flex;
@@ -56,11 +31,46 @@ const ChartDiv = styled.div`
 `;
 
 const TodayUser = () => {
+  const [id, setId] = useState(null);
+
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 :(</p>;
+
+  const columns = [
+    {
+      title: 'Picture',
+      dataIndex: 'picture',
+      key: 'picture',
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    { title: 'Nickname', dataIndex: 'nickname', key: 'nickname' },
+    { title: 'CreatedAt', dataIndex: 'createdAt', key: 'createdAt' },
+    {
+      title: 'Action',
+      dataIndex: 'Action',
+      key: 'Action',
+      render: (text, record) => {
+        return (
+          <span>
+            <a
+              onClick={() => {
+                setId(record.key);
+              }}
+            >
+              Message
+            </a>
+          </span>
+        );
+      },
+    },
+  ];
 
   let dataSource = data.users
     .map((user) => {
@@ -86,6 +96,7 @@ const TodayUser = () => {
       <ChartDiv>
         <District_Chart />
       </ChartDiv>
+      {id ? <Message id={id} /> : null}
     </OuterDiv>
   );
 };

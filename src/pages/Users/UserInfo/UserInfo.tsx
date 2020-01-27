@@ -7,7 +7,7 @@ import { Table, Tag, Button, Divider, Input, Icon } from 'antd';
 import Highlighter from 'react-highlight-words';
 import UserAdd from '../UserAdd/UserAdd';
 
-import Room2 from '../../Graph/Room2';
+import Message from '../../../components/Message/Message';
 
 // message 방을 집어 넣어야 함
 
@@ -16,7 +16,7 @@ export const UserInfo = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
 
-  const [message, setMessage] = useState(null);
+  const [id, setId] = useState(null);
 
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
@@ -162,7 +162,13 @@ export const UserInfo = () => {
       render: (text, record) => {
         return (
           <span>
-            <a onClick={() => setMessage(record.id)}>Message</a>
+            <a
+              onClick={() => {
+                setId(record.key);
+              }}
+            >
+              Message
+            </a>
             {/* <Divider type="vertical" />
             <a>Delete</a> */}
           </span>
@@ -180,7 +186,7 @@ export const UserInfo = () => {
       />
       <Button onClick={() => setAddUSer(!addUser)}>Add User</Button>
       {addUser ? <UserAdd /> : null}
-      {message ? <Room2 room={message} /> : null}
+      {id ? <Message id={id} /> : null}
     </>
   );
 };

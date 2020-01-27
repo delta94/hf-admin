@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Chat,
   Channel,
@@ -19,8 +19,8 @@ const chatClient = new StreamChat(API_KEY);
 
 const userToken = TOKEN;
 
-const Room2 = (props) => {
-  console.log(props);
+const Message = (props) => {
+  const [isOpen, setIsOpen] = useState(true);
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
@@ -39,8 +39,9 @@ const Room2 = (props) => {
 
   const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
   const myEmail = dataMe.me.email;
-  const yourEmail = data.users[props.room].email;
-  const nickname = data.users[props.room].nickname;
+  const targetUser = data.users.filter((user) => user.id === props.id);
+  const yourEmail = targetUser.email;
+  const nickname = targetUser.nickname;
 
   const room = [myEmail, yourEmail]
     .sort()
@@ -60,32 +61,36 @@ const Room2 = (props) => {
   const channel = chatClient.channel('messaging', `${room}`, {
     name: `${nickname}`,
   });
-  //disabled 시키는 방법 찾아보기
+
   return (
-    <div style={{ position: 'absolute' }}>
-      <Chat client={chatClient} theme={'messaging light'}>
-        <Channel channel={channel}>
-          <div
-            style={{
-              position: 'fixed',
-              right: '0px',
-              bottom: '0px',
-              height: '400px',
-              width: '380px',
+    <Chat client={chatClient} theme={'messaging light'}>
+      <Channel channel={channel}>
+        <div
+          style={{
+            position: 'fixed',
+            right: '0px',
+            bottom: '0px',
+            height: '400px',
+            width: '380px',
+          }}
+        >
+          <a
+            onClick={() => {
+              window.location.reload();
             }}
           >
-            <a onClick={() => console.log('ok')}>닫기</a>
-            <Window>
-              <ChannelHeader />
-              <MessageList />
-              <MessageInput />
-            </Window>
-            <Thread />
-          </div>
-        </Channel>
-      </Chat>
-    </div>
+            닫기
+          </a>
+          <Window>
+            <ChannelHeader />
+            <MessageList />
+            <MessageInput />
+          </Window>
+          <Thread />
+        </div>
+      </Channel>
+    </Chat>
   );
 };
 
-export default Room2;
+export default Message;
