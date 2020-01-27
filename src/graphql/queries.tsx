@@ -44,6 +44,10 @@ export const GET_USERS = gql`
       following {
         id
       }
+      profileImage {
+        id
+        filename
+      }
       ableDistricts {
         district {
           nameOfGu
