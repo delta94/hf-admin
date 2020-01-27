@@ -12,19 +12,15 @@ import { StreamChat } from 'stream-chat';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS, GET_USERINFO } from '../../graphql/queries';
 import 'antd/dist/antd.css';
-// import stream from 'getstream';
 
-// import Cookies from 'js-cookie';
-// const token = Cookies.get('stream-chat-token');
 import 'stream-chat-react/dist/css/index.css';
 
 const chatClient = new StreamChat(API_KEY);
-// const client = stream.connect('7gfp3v3jzxev', null, '67968');
+
 const userToken = TOKEN;
 
-// client.apiSecret = SECRET;
-
-const Room = ({ match }) => {
+const Room2 = (props) => {
+  console.log(props);
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
@@ -43,18 +39,14 @@ const Room = ({ match }) => {
 
   const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
   const myEmail = dataMe.me.email;
-  const yourEmail = data.users[match.params.id].email;
-  const nickname = data.users[match.params.id].nickname;
+  const yourEmail = data.users[props.room].email;
+  const nickname = data.users[props.room].nickname;
 
   const room = [myEmail, yourEmail]
     .sort()
     .join(',')
     .replace(regExp, '');
 
-  // const token = Cookies.get('access-token');
-  // console.log('test: ', token);
-
-  //token 만 제대로 받아지면 될 거 같음
   chatClient.disconnect();
   chatClient.setUser(
     {
@@ -68,9 +60,9 @@ const Room = ({ match }) => {
   const channel = chatClient.channel('messaging', `${room}`, {
     name: `${nickname}`,
   });
-
+  //disabled 시키는 방법 찾아보기
   return (
-    <div>
+    <div style={{ position: 'absolute' }}>
       <Chat client={chatClient} theme={'messaging light'}>
         <Channel channel={channel}>
           <div
@@ -82,6 +74,7 @@ const Room = ({ match }) => {
               width: '380px',
             }}
           >
+            <a onClick={() => console.log('ok')}>닫기</a>
             <Window>
               <ChannelHeader />
               <MessageList />
@@ -95,4 +88,4 @@ const Room = ({ match }) => {
   );
 };
 
-export default Room;
+export default Room2;

@@ -4,9 +4,10 @@ import { Button, Form } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_TOKEN } from '../../graphql/queries';
 import { useCookies } from 'react-cookie';
+
 import LoginButton from './LoginButton';
 
-import Message from '../Message/Message';
+import Menu from '../Menu';
 let query;
 
 const Login = () => {
@@ -63,7 +64,6 @@ const Login = () => {
 
   if (loading) return <p>로딩 중...</p>;
   if (error) {
-    // console.log('test123', cookies['access-token']);
     return (
       <LoginButton
         username={username}
@@ -87,8 +87,8 @@ const Login = () => {
               color: 'white',
             }}
           >
-            <Message />
-            <span style={{ marginRight: '20px' }}>반갑습니다</span>
+            <Menu />
+
             <Button
               onClick={() => {
                 onLogout();
@@ -99,13 +99,18 @@ const Login = () => {
           </Form>
         </>
       ) : (
-        <LoginButton
-          username={username}
-          onChangeUsernmae={onChangeUsernmae}
-          password={password}
-          onChangePassword={onChangePassword}
-          onLogin={onLogin}
-        />
+        <>
+          {/* <Button>
+            <a href="http://localhost:4000/auth/google"></a>
+          </Button> */}
+          <LoginButton
+            username={username}
+            onChangeUsernmae={onChangeUsernmae}
+            password={password}
+            onChangePassword={onChangePassword}
+            onLogin={onLogin}
+          />
+        </>
       )}
     </>
   );

@@ -9,7 +9,7 @@ import Room from './Room';
 export const Graph = ({ match }) => {
   return (
     <div>
-      <Route exact path={match.path} component={User} />
+      <Route path={match.path} component={User} />
       <Route path={`${match.path}/:id`} component={Room} />
     </div>
   );
