@@ -25,8 +25,10 @@ const Message = () => {
             border: '1px solid black',
           }}
         >
-          <Avatar size="small" icon="user" />
-          <span>{user.nickname}</span>
+          <div>
+            <Avatar size="small" icon="user" />
+            <span>{user.nickname}</span>
+          </div>
         </Menu.Item>
       );
     } else return;

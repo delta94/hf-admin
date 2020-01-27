@@ -40,8 +40,8 @@ const Message = (props) => {
   const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
   const myEmail = dataMe.me.email;
   const targetUser = data.users.filter((user) => user.id === props.id);
-  const yourEmail = targetUser.email;
-  const nickname = targetUser.nickname;
+  const yourEmail = targetUser[0].email;
+  const nickname = targetUser[0].nickname;
 
   const room = [myEmail, yourEmail]
     .sort()
