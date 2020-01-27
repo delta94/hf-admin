@@ -4,13 +4,48 @@ import { GET_USERS } from '../../../graphql/queries';
 
 import { Pie } from 'react-chartjs-2';
 
+const fakeData = {
+  datasets: [
+    {
+      data: [3, 3, 3],
+      backgroundColor: ['#bc5090', '#ef5675', '#ff764a'],
+    },
+  ],
+};
+
 export const District_Chart = () => {
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
 
-  if (loading) return <p>로딩 중...</p>;
-  if (error) return <p>오류 :(</p>;
+  if (loading)
+    return (
+      <Pie
+        data={fakeData}
+        options={{
+          title: {
+            display: true,
+            fontSize: 20,
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+        }}
+      />
+    );
+  if (error)
+    return (
+      <Pie
+        data={fakeData}
+        options={{
+          title: {
+            display: true,
+            fontSize: 20,
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+        }}
+      />
+    );
 
   let gangnam = 0;
   let songpa = 0;

@@ -2,29 +2,14 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import 'antd/dist/antd.css';
-import styled from 'styled-components';
-import { Card, Icon } from 'antd';
+import { Icon } from 'antd';
 import { GENDER_CHART } from '../chart/genderChart';
 import BestUser from '../BestUser/BestUser';
 
-const DashboardDiv1 = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-`;
+import { DashboardDiv1, StyledCard, CardSpan } from '../Dashboard.styled';
 
-const StyledCard = styled(Card)`
-  width: 23%;
-  height: 120px;
-  border-radius: 20px;
-`;
+import { CardLoading } from '../Dashboard.styled';
 
-const CardSpan = styled.span`
-  position: relative;
-  top: -12px;
-  color: white;
-  cursor: pointer;
-`;
 const Cards = () => {
   const [best, setBest] = useState(false);
   const [gender, setGender] = useState(true);
@@ -33,7 +18,7 @@ const Cards = () => {
     fetchPolicy: 'network-only',
   });
 
-  if (loading) return <p>로딩 중...</p>;
+  if (loading) return <CardLoading />;
   if (error) return <p>오류 :(</p>;
 
   let totalUser = data.users.length;
