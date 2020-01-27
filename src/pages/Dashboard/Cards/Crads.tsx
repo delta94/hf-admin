@@ -8,6 +8,8 @@ import BestUser from '../BestUser/BestUser';
 
 import { DashboardDiv1, StyledCard, CardSpan } from '../Dashboard.styled';
 
+import { CardLoading } from '../Dashboard.styled';
+
 const Cards = () => {
   const [best, setBest] = useState(false);
   const [gender, setGender] = useState(true);
@@ -16,7 +18,7 @@ const Cards = () => {
     fetchPolicy: 'network-only',
   });
 
-  if (loading) return <p>로딩 중...</p>;
+  if (loading) return <CardLoading />;
   if (error) return <p>오류 :(</p>;
 
   let totalUser = data.users.length;

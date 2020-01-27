@@ -1,6 +1,12 @@
+import React from 'react';
+
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import { Card, Icon, Layout } from 'antd';
+import { District_Chart } from './chart/districtChart';
+// import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
+import { WEEK_CHART } from './chart/weekChart';
+import { MOTIVATION_CHART } from './chart/motivationChart';
+import { Card, Layout, Table } from 'antd';
 
 const { Content } = Layout;
 
@@ -51,3 +57,106 @@ export const ChartDiv = styled.div`
   height: 90%;
   width: 30%;
 `;
+
+// chart
+
+export const OuterChartDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const InnerChartDiv = styled.div`
+  background-color: white;
+  margin-top: 20px;
+  width: 49%;
+  height: 200px;
+`;
+
+export const Skeleton = () => {
+  return (
+    <StyledContent style={{ opacity: '0.5' }}>
+      <DashboardDiv1>
+        <StyledCard
+          style={{
+            backgroundColor: 'rgb(47 125 247)',
+          }}
+        >
+          <CardSpan />
+        </StyledCard>
+        <StyledCard
+          style={{
+            backgroundColor: 'rgb(246 194 68)',
+          }}
+        >
+          <CardSpan />
+        </StyledCard>
+        <StyledCard
+          style={{
+            backgroundColor: 'rgb(83 164 81)',
+          }}
+        >
+          <CardSpan />
+        </StyledCard>
+        <StyledCard
+          style={{
+            backgroundColor: 'rgb(203 68 75)',
+          }}
+        >
+          <CardSpan />
+        </StyledCard>
+      </DashboardDiv1>
+      <OuterDiv>
+        <UserDiv style={{ backgroundColor: 'white' }}>
+          <Table />
+        </UserDiv>
+        <ChartDiv>
+          <District_Chart />
+        </ChartDiv>
+      </OuterDiv>
+
+      <OuterChartDiv>
+        <InnerChartDiv>
+          <WEEK_CHART />
+        </InnerChartDiv>
+        <InnerChartDiv>
+          <MOTIVATION_CHART />
+        </InnerChartDiv>
+      </OuterChartDiv>
+    </StyledContent>
+  );
+};
+
+export const CardLoading = () => {
+  return (
+    <DashboardDiv1>
+      <StyledCard
+        style={{
+          backgroundColor: 'rgb(47 125 247)',
+        }}
+      >
+        <CardSpan />
+      </StyledCard>
+      <StyledCard
+        style={{
+          backgroundColor: 'rgb(246 194 68)',
+        }}
+      >
+        <CardSpan />
+      </StyledCard>
+      <StyledCard
+        style={{
+          backgroundColor: 'rgb(83 164 81)',
+        }}
+      >
+        <CardSpan />
+      </StyledCard>
+      <StyledCard
+        style={{
+          backgroundColor: 'rgb(203 68 75)',
+        }}
+      >
+        <CardSpan />
+      </StyledCard>
+    </DashboardDiv1>
+  );
+};

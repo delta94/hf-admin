@@ -18,7 +18,20 @@ export const District_Chart = () => {
     fetchPolicy: 'network-only',
   });
 
-  if (loading) return <p>로딩 중...</p>;
+  if (loading)
+    return (
+      <Pie
+        data={fakeData}
+        options={{
+          title: {
+            display: true,
+            fontSize: 20,
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+        }}
+      />
+    );
   if (error)
     return (
       <Pie

@@ -3,13 +3,54 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import { Bar } from 'react-chartjs-2';
 
+const fakeData = {
+  labels: ['증량', '증감', '친구찾기', '외로움'],
+  datasets: [
+    {
+      label: '인원',
+      backgroundColor: ['#003f5c', '#58508d', '#bc5090', '#ff6361'],
+      borderColor: 'rgba(0,0,0,1)',
+      borderWidth: 2,
+      data: [5, 5, 5, 5],
+    },
+  ],
+};
+
 export const MOTIVATION_CHART = () => {
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
 
   if (loading) return <p>로딩 중...</p>;
-  if (error) return <p>오류 :(</p>;
+  if (error)
+    return (
+      <Bar
+        data={fakeData}
+        options={{
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+
+          title: {
+            display: true,
+            text: 'motivation',
+            fontSize: 20,
+          },
+          legend: {
+            display: false,
+            position: 'top',
+          },
+        }}
+      />
+    );
 
   let weightInc = 0;
   let wieghtDec = 0;
