@@ -12,7 +12,6 @@ const MyMessageComponent = (props) => {
   if (landingR) return <p>로딩 중...</p>;
   if (errorR) return <p>오류 :(</p>;
 
-  console.log();
   return (
     <div>
       {dataMe.me.nickname === props.message.user.name ? (

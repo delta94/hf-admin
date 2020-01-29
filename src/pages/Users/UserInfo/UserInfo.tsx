@@ -3,13 +3,11 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import 'antd/dist/antd.css';
-import { Table, Tag, Button, Divider, Input, Icon } from 'antd';
+import { Table, Tag, Button, Input, Icon } from 'antd';
 import Highlighter from 'react-highlight-words';
 import UserAdd from '../UserAdd/UserAdd';
 
 import Message from '../../../components/Message/Message';
-
-// message 방을 집어 넣어야 함
 
 export const UserInfo = () => {
   const [addUser, setAddUSer] = useState(false);
@@ -169,8 +167,6 @@ export const UserInfo = () => {
             >
               Message
             </a>
-            {/* <Divider type="vertical" />
-            <a>Delete</a> */}
           </span>
         );
       },
