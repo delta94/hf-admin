@@ -74,7 +74,7 @@ const TodayUser = () => {
 
   let dataSource = data.users
     .map((user) => {
-      if (user.createdAt.slice(0, 10) === todayDate()) {
+      if (user.createdAt.slice(0, 10) === '2020-01-28') {
         return {
           key: user.id,
           email: user.email,
@@ -84,6 +84,16 @@ const TodayUser = () => {
       } else return null;
     })
     .filter((user) => user);
+
+  // let test = data.users.map((user) => {
+  //   if (user.createdAt.slice(0, 10) === todayDate()) {
+  //     return {
+  //       createdAt: user.createdAt.slice(0, 10),
+  //     };
+  //   }
+  // });
+
+  // console.log(test);
 
   return (
     <OuterDiv>

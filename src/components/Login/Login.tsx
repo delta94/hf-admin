@@ -47,17 +47,19 @@ const Login = () => {
 
   const onLogout = () => {
     removeCookie('access-token');
+    removeCookie('stream-chat-token');
     setIsLogin(false);
     window.location.reload();
   };
 
-  const onCookie = (token) => {
-    setCookie('access-token', token);
+  const onCookie = (loginToken, chatToken) => {
+    setCookie('access-token', loginToken);
+    setCookie('stream-chat-token', chatToken);
   };
 
   if (data) {
     if (data.login) {
-      onCookie(data.login.token);
+      onCookie(data.login.loginToken, data.login.chatToken);
       window.location.reload();
     }
   }
@@ -100,9 +102,6 @@ const Login = () => {
         </>
       ) : (
         <>
-          {/* <Button>
-            <a href="http://localhost:4000/auth/google"></a>
-          </Button> */}
           <LoginButton
             username={username}
             onChangeUsernmae={onChangeUsernmae}

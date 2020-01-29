@@ -17,8 +17,9 @@ import Chart from './pages/Chart/Chart';
 import client from './graphql/apollo';
 
 const MainLayout = styled(Layout)`
+  width: 100vw;
   height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 const App = () => {

@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 export const GET_USERINFO = gql`
   {
     me {
+      id
       email
       nickname
       openImageChoice
@@ -81,7 +82,8 @@ export const MUTATE_INFO = gql`
 export const GET_TOKEN = gql`
   query getLogin($email: String, $password: String) {
     login(email: $email, password: $password) {
-      token
+      loginToken
+      chatToken
     }
   }
 `;

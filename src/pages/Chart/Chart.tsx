@@ -1,163 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Chat, Channel, ChannelList, Window } from 'stream-chat-react';
+import { ChannelHeader, MessageList } from 'stream-chat-react';
+import { MessageInput, Thread } from 'stream-chat-react';
+import { StreamChat } from 'stream-chat';
+
 import { useQuery } from '@apollo/react-hooks';
-import { GET_USERS } from '../../graphql/queries';
-import 'antd/dist/antd.css';
-import { Table, Divider, Button, Input, Icon } from 'antd';
-import Highlighter from 'react-highlight-words';
+import { GET_USERINFO } from '../../graphql/queries';
+import { API_KEY } from '../../config/config';
+import Cookies from 'js-cookie';
 
-export const Chart = () => {
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
-  const { loading, error, data } = useQuery(GET_USERS, {
-    fetchPolicy: 'network-only',
-  });
+import MyMessageComponent from './MyMessageComponent';
+import ChannelPreview from './ChannelPreview';
 
-  if (loading) return <p>로딩 중...</p>;
-  if (error) return <p>오류 :(</p>;
+import 'stream-chat-react/dist/css/index.css';
 
-  let dataSource = data.users.map((user, i) => {
-    return {
-      id: i,
-      email: user.email,
-      nickname: user.nickname,
-      levelOf3Dae: user.levelOf3Dae,
-      createdAt: user.createdAt.slice(0, 10),
-      role: user.role,
-    };
-  });
+const chatClient = new StreamChat(API_KEY);
+const token = Cookies.get('stream-chat-token');
 
-  const getColumnSearchProps = (dataIndex) => ({
-    filterDropdown: ({
-      setSelectedKeys,
-      selectedKeys,
-      confirm,
-      clearFilters,
-    }) => (
-      <div style={{ padding: 8 }}>
-        <Input
-          // ref={(node) => {
-          //   this.searchInput = node;
-          // }}
-          placeholder={`Search ${dataIndex}`}
-          value={selectedKeys[0]}
-          onChange={(e) =>
-            setSelectedKeys(e.target.value ? [e.target.value] : [])
-          }
-          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          style={{ width: 188, marginBottom: 8, display: 'block' }}
-        />
-        <Button
-          type="primary"
-          onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          icon="search"
-          size="small"
-          style={{ width: 90, marginRight: 8 }}
-        >
-          Search
-        </Button>
-        <Button
-          onClick={() => handleReset(clearFilters)}
-          size="small"
-          style={{ width: 90 }}
-        >
-          Reset
-        </Button>
-      </div>
-    ),
-    filterIcon: (filtered) => (
-      <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
-    ),
-    onFilter: (value, record) =>
-      record[dataIndex]
-        .toString()
-        .toLowerCase()
-        .includes(value.toLowerCase()),
-    onFilterDropdownVisibleChange: (visible) => {
-      // if (visible) {
-      //   setTimeout(() => searchInput.select());
-      // }
-    },
-    render: (text) =>
-      searchedColumn === dataIndex ? (
-        <Highlighter
-          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
-          searchWords={[searchText]}
-          autoEscape
-          textToHighlight={text.toString()}
-        />
-      ) : (
-        text
-      ),
-  });
-
-  const handleSearch = (selectedKeys, confirm, dataIndex) => {
-    confirm();
-    setSearchText(selectedKeys[0]);
-    setSearchedColumn(dataIndex);
-  };
-
-  const handleReset = (clearFilters) => {
-    clearFilters();
-    setSearchText('');
-  };
-
-  const columns = [
+const App = () => {
+  const { error: errorR, loading: landingR, data: dataMe } = useQuery(
+    GET_USERINFO,
     {
-      title: 'Id',
-      dataIndex: 'id',
-      render: (text) => <a href={`/users/${text}`}>{text}</a>,
-      key: 'id',
+      fetchPolicy: 'network-only',
     },
-    {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
-      sorter: (a, b) => {
-        return a.email.localeCompare(b.email);
-      },
-    },
-    {
-      title: 'Nickname',
-      dataIndex: 'nickname',
-      key: 'nickname',
-      ...getColumnSearchProps('nickname'),
-    },
-    {
-      title: '삼대중량',
-      dataIndex: 'levelOf3Dae',
-      key: 'levelOf3Dae',
-    },
-    {
-      title: 'CreatedAt',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
-    },
-    {
-      title: 'Role',
-      dataIndex: 'role',
-      key: 'role',
-    },
-    {
-      title: 'Action',
-      dataIndex: 'role',
-      key: 'action',
-      render: (text, record) => (
-        <span>
-          <a>Message {record.lastName}</a>
-          <Divider type="vertical" />
-          <a>Delete</a>
-        </span>
-      ),
-    },
-  ];
+  );
+  if (landingR) return <p>로딩 중...</p>;
+  if (errorR) return <p>오류 :(</p>;
 
+  chatClient.disconnect();
+  chatClient.setUser(
+    {
+      id: dataMe.me.id,
+      name: dataMe.me.nickname,
+    },
+    token,
+  );
+  const filters = { type: 'messaging' };
+  const sort = { last_message_at: -1 };
   return (
-    <Table
-      dataSource={dataSource}
-      columns={columns}
-      pagination={{ pageSize: 5 }}
-    />
+    <div>
+      <Chat client={chatClient} theme={'messaging light'}>
+        <ChannelList filters={filters} sort={sort} Preview={ChannelPreview} />
+        <Channel Message={MyMessageComponent}>
+          <Window>
+            <ChannelHeader />
+            <MessageList />
+            <MessageInput />
+          </Window>
+          <Thread />
+        </Channel>
+      </Chat>
+    </div>
   );
 };
 
-export default Chart;
+export default App;

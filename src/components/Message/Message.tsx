@@ -3,6 +3,7 @@ import {
   Chat,
   Channel,
   ChannelHeader,
+  ChannelList,
   Thread,
   Window,
 } from 'stream-chat-react';
@@ -14,10 +15,10 @@ import { GET_USERS, GET_USERINFO } from '../../graphql/queries';
 import 'antd/dist/antd.css';
 
 import 'stream-chat-react/dist/css/index.css';
+import Cookies from 'js-cookie';
 
 const chatClient = new StreamChat(API_KEY);
-
-const userToken = TOKEN;
+const token = Cookies.get('stream-chat-token');
 
 const Message = (props) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -48,14 +49,15 @@ const Message = (props) => {
     .join(',')
     .replace(regExp, '');
 
+  console.log(dataMe.me);
+
   chatClient.disconnect();
   chatClient.setUser(
     {
-      id: 'ancient-surf-2',
-      // id: dataMe.me.email,
-      email: myEmail,
+      id: dataMe.me.id,
+      name: dataMe.me.nickname,
     },
-    userToken,
+    token,
   );
 
   const channel = chatClient.channel('messaging', `${room}`, {
@@ -63,7 +65,7 @@ const Message = (props) => {
   });
 
   return (
-    <Chat client={chatClient} theme={'messaging light'}>
+    <Chat client={chatClient}>
       <Channel channel={channel}>
         <div
           style={{

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Chat,
   Channel,
   ChannelHeader,
+  ChannelList,
   Thread,
   Window,
 } from 'stream-chat-react';
@@ -12,19 +13,15 @@ import { StreamChat } from 'stream-chat';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS, GET_USERINFO } from '../../graphql/queries';
 import 'antd/dist/antd.css';
-// import stream from 'getstream';
 
-// import Cookies from 'js-cookie';
-// const token = Cookies.get('stream-chat-token');
 import 'stream-chat-react/dist/css/index.css';
+import Cookies from 'js-cookie';
 
 const chatClient = new StreamChat(API_KEY);
-// const client = stream.connect('7gfp3v3jzxev', null, '67968');
-const userToken = TOKEN;
+const token = Cookies.get('stream-chat-token');
 
-// client.apiSecret = SECRET;
-
-const Room = ({ match }) => {
+const Message = ({ match }) => {
+  const [isOpen, setIsOpen] = useState(true);
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
@@ -51,48 +48,51 @@ const Room = ({ match }) => {
     .join(',')
     .replace(regExp, '');
 
-  // const token = Cookies.get('access-token');
-  // console.log('test: ', token);
-
-  //token 만 제대로 받아지면 될 거 같음
   chatClient.disconnect();
   chatClient.setUser(
     {
-      id: 'ancient-surf-2',
-      // id: dataMe.me.email,
-      email: myEmail,
+      id: dataMe.me.id,
     },
-    userToken,
+    token,
   );
 
   const channel = chatClient.channel('messaging', `${room}`, {
     name: `${nickname}`,
   });
 
+  const filters = { type: 'messaging' };
+  const sort = { last_message_at: -1 };
+
   return (
-    <div>
-      <Chat client={chatClient} theme={'messaging light'}>
-        <Channel channel={channel}>
-          <div
-            style={{
-              position: 'fixed',
-              right: '0px',
-              bottom: '0px',
-              height: '400px',
-              width: '380px',
+    <Chat client={chatClient}>
+      <ChannelList filters={filters} sort={sort} />
+      <Channel>
+        <div
+          style={{
+            position: 'fixed',
+            right: '0px',
+            bottom: '0px',
+            height: '400px',
+            width: '380px',
+          }}
+        >
+          <a
+            onClick={() => {
+              window.location.reload();
             }}
           >
-            <Window>
-              <ChannelHeader />
-              <MessageList />
-              <MessageInput />
-            </Window>
-            <Thread />
-          </div>
-        </Channel>
-      </Chat>
-    </div>
+            닫기
+          </a>
+          <Window>
+            <ChannelHeader />
+            <MessageList />
+            <MessageInput />
+          </Window>
+          <Thread />
+        </div>
+      </Channel>
+    </Chat>
   );
 };
 
-export default Room;
+export default Message;
