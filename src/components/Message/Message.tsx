@@ -65,33 +65,35 @@ const Message = (props) => {
   });
 
   return (
-    <Chat client={chatClient}>
-      <Channel channel={channel}>
-        <div
-          style={{
-            position: 'fixed',
-            right: '0px',
-            bottom: '0px',
-            height: '400px',
-            width: '380px',
-          }}
-        >
-          <a
-            onClick={() => {
-              window.location.reload();
+    <div style={{ width: '0px', height: '0px' }}>
+      <Chat client={chatClient}>
+        <Channel channel={channel}>
+          <div
+            style={{
+              position: 'fixed',
+              right: '0px',
+              bottom: '0px',
+              height: '400px',
+              width: '380px',
             }}
           >
-            닫기
-          </a>
-          <Window>
-            <ChannelHeader />
-            <MessageList />
-            <MessageInput />
-          </Window>
-          <Thread />
-        </div>
-      </Channel>
-    </Chat>
+            <a
+              onClick={() => {
+                window.location.reload();
+              }}
+            >
+              닫기
+            </a>
+            <Window>
+              <ChannelHeader />
+              <MessageList />
+              <MessageInput />
+            </Window>
+            <Thread />
+          </div>
+        </Channel>
+      </Chat>
+    </div>
   );
 };
 

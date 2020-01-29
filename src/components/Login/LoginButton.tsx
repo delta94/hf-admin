@@ -8,7 +8,7 @@ const LoginButton = ({
   onChangePassword,
   onLogin,
 }) => (
-  <Form style={{ position: 'absolute', top: '10px', right: '20px' }}>
+  <>
     <Input
       prefix={<Icon type="user" />}
       style={{ width: '150px', marginRight: '15px' }}
@@ -27,7 +27,7 @@ const LoginButton = ({
     <Button type="primary" size="large" onClick={() => onLogin()}>
       Login
     </Button>
-  </Form>
+  </>
 );
 
 export default LoginButton;

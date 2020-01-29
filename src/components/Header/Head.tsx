@@ -12,15 +12,15 @@ const { Header } = Layout;
 function Head() {
   return (
     <Header className="header">
-      <Menu />
       <Form
         style={{
           position: 'absolute',
-          top: '20px',
+          top: '15px',
           right: '20px',
           color: 'white',
         }}
       >
+        <Menu />
         <Login />
       </Form>
     </Header>

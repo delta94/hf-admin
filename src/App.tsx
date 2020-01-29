@@ -11,8 +11,7 @@ import Sidebar from './components/SideBar/Sidebar';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Users from './pages/Users';
 import Setting from './pages/Setting/Setting';
-import Graph from './pages/Graph/Graph';
-import Chart from './pages/Chart/Chart';
+import Messages from './pages/Messages/Message';
 
 import client from './graphql/apollo';
 
@@ -35,8 +34,7 @@ const App = () => {
                 <Route exact path="/" component={Dashboard} />
                 <Route path="/users" component={Users} />
                 <Route exact path="/setting" component={Setting} />
-                <Route path="/graph" component={Graph} />
-                <Route exact path="/chart" component={Chart} />
+                <Route exact path="/messages" component={Messages} />
               </Switch>
             </Layout>
           </Layout>

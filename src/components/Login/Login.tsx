@@ -81,24 +81,13 @@ const Login = () => {
     <>
       {isLogin && cookies['access-token'] ? (
         <>
-          <Form
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              color: 'white',
+          <Button
+            onClick={() => {
+              onLogout();
             }}
           >
-            <Menu />
-
-            <Button
-              onClick={() => {
-                onLogout();
-              }}
-            >
-              Logout
-            </Button>
-          </Form>
+            Logout
+          </Button>
         </>
       ) : (
         <>

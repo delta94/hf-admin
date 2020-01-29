@@ -26,22 +26,16 @@ function Sidebar() {
             <span>Users</span>
           </Link>
         </Menu.Item>
+        <Menu.Item key="4">
+          <Link to="/messages">
+            <Icon type="message" />
+            <span>Message</span>
+          </Link>
+        </Menu.Item>
         <Menu.Item key="3">
           <Link to="/setting">
             <Icon type="setting" />
             <span>Setting</span>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="4">
-          <Link to="/graph">
-            <Icon type="area-chart" />
-            <span>graph</span>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="5">
-          <Link to="/chart">
-            <Icon type="pie-chart" />
-            <span>chart</span>
           </Link>
         </Menu.Item>
       </Menu>
