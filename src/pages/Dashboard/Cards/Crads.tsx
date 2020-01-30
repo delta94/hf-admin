@@ -4,13 +4,16 @@ import { GET_USERS } from '../../../graphql/queries';
 import 'antd/dist/antd.css';
 import { Icon } from 'antd';
 import { GENDER_CHART } from '../chart/genderChart';
-import BestUser from '../BestUser/BestUser';
+
+import TotalUser from './TotalUser/TotalUser';
+import BestUser from './BestUser/BestUser';
 
 import { DashboardDiv1, StyledCard, CardSpan } from '../Dashboard.styled';
 
 import { CardLoading } from '../Dashboard.styled';
 
 const Cards = () => {
+  const [total, setTotal] = useState(false);
   const [best, setBest] = useState(false);
   const [gender, setGender] = useState(true);
   const [average, setAverage] = useState(true);
@@ -45,11 +48,7 @@ const Cards = () => {
             backgroundColor: 'rgb(47 125 247)',
           }}
         >
-          <CardSpan>
-            <a href="/users" style={{ textDecoration: 'none', color: 'white' }}>
-              view detail
-            </a>
-          </CardSpan>
+          <CardSpan onClick={() => setTotal(!total)}>view detail</CardSpan>
         </StyledCard>
 
         <StyledCard
@@ -85,8 +84,8 @@ const Cards = () => {
               backgroundColor: 'rgb(152 191 144)',
             }}
           >
-            <div>총 팔로잉 수: </div>
-            <div>총 유저 수: </div>
+            <div>총 유저 수: {totalUser}</div>
+            <div>총 팔로잉 수: {numberOfFollowing}</div>
             <br />
             <CardSpan onClick={() => setAverage(true)}>back</CardSpan>
           </StyledCard>
@@ -117,6 +116,7 @@ const Cards = () => {
           </StyledCard>
         )}
       </DashboardDiv1>
+      {total ? <TotalUser /> : null}
       {best ? <BestUser /> : null}
     </>
   );

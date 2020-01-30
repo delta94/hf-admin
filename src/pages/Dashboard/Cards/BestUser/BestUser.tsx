@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import FollowersRank from '../chart/followersRank';
-import FollowingsRank from '../chart/followingsRank';
+import FollowersRank from '../../chart/followersRank';
+import FollowingsRank from '../../chart/followingsRank';
 
 const OuterDiv = styled.div`
   display: flex;
