@@ -49,8 +49,6 @@ const Message = (props) => {
     .join(',')
     .replace(regExp, '');
 
-  console.log(dataMe.me);
-
   chatClient.disconnect();
   chatClient.setUser(
     {

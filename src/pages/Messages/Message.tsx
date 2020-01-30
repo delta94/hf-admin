@@ -18,14 +18,11 @@ const chatClient = new StreamChat(API_KEY);
 const token = Cookies.get('stream-chat-token');
 
 const App = () => {
-  const { error: errorR, loading: landingR, data: dataMe } = useQuery(
-    GET_USERINFO,
-    {
-      fetchPolicy: 'network-only',
-    },
-  );
-  if (landingR) return <p>로딩 중...</p>;
-  if (errorR) return <p>오류 :(</p>;
+  const { error, loading, data: dataMe } = useQuery(GET_USERINFO, {
+    fetchPolicy: 'network-only',
+  });
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>오류 :(</p>;
 
   chatClient.disconnect();
   chatClient.setUser(

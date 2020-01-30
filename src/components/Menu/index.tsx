@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
-import { Icon } from 'antd';
+import { Icon, Badge } from 'antd';
 
 const index = () => {
   return (
     <Link to="/messages" style={{ marginRight: '150px', cursor: 'pointer' }}>
-      <Icon type="message" />
+      <Badge dot>
+        <Icon type="message" />
+      </Badge>
     </Link>
   );
 };

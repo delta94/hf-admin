@@ -1,18 +1,33 @@
-import React, { useEffect } from 'react';
-let i = 0;
+import React from 'react';
+import styled from 'styled-components';
+
+import 'antd/dist/antd.css';
+import { Avatar, Badge } from 'antd';
+
+const CustomerList = styled.div`
+  position: relative;
+  line-height: 80px;
+  font-size: 1.3rem;
+`;
 
 const ChannelPreview = ({ setActiveChannel, channel }) => {
   const unreadCount = channel.countUnread();
 
-  useEffect(() => {
-    i += unreadCount;
-  });
-
   return (
-    <div style={{ height: '40px', fontSize: '1.2rem' }}>
-      <a onClick={(e) => setActiveChannel(channel, e)}>{channel.data.name}</a>
-      <span>{unreadCount !== 0 ? unreadCount : null}</span>
-    </div>
+    <CustomerList>
+      <div style={{ marginLeft: '20px' }}>
+        <Badge count={unreadCount}>
+          <Avatar size="large" icon="user" />
+        </Badge>
+        <a
+          onClick={() => {
+            setActiveChannel(channel);
+          }}
+        >
+          {channel.data.name}
+        </a>
+      </div>
+    </CustomerList>
   );
 };
 
