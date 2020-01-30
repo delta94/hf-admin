@@ -44,6 +44,9 @@ const TodayUser = () => {
       title: 'Picture',
       dataIndex: 'picture',
       key: 'picture',
+      render: (text, record) => {
+        return <img src={record.picture} />;
+      },
     },
     {
       title: 'Email',
@@ -59,13 +62,15 @@ const TodayUser = () => {
       render: (text, record) => {
         return (
           <span>
-            <a
-              onClick={() => {
-                setId(record.key);
-              }}
-            >
-              Message
-            </a>
+            <div>
+              <a
+                onClick={() => {
+                  setId(record.key);
+                }}
+              >
+                Message
+              </a>
+            </div>
           </span>
         );
       },
@@ -77,6 +82,7 @@ const TodayUser = () => {
       if (user.createdAt.slice(0, 10) === todayDate()) {
         return {
           key: user.id,
+          picture: user.profileImage[0] ? user.profileImage[0].filename : null,
           email: user.email,
           nickname: user.nickname,
           createdAt: user.createdAt.slice(0, 10),
@@ -84,16 +90,6 @@ const TodayUser = () => {
       } else return null;
     })
     .filter((user) => user);
-
-  // let test = data.users.map((user) => {
-  //   if (user.createdAt.slice(0, 10) === todayDate()) {
-  //     return {
-  //       createdAt: user.createdAt.slice(0, 10),
-  //     };
-  //   }
-  // });
-
-  // console.log(test);
 
   return (
     <OuterDiv>
