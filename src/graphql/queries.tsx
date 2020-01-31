@@ -84,6 +84,9 @@ export const GET_TOKEN = gql`
     login(email: $email, password: $password) {
       loginToken
       chatToken
+      user {
+        role
+      }
     }
   }
 `;

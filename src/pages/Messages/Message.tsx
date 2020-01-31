@@ -34,6 +34,7 @@ const App = () => {
   );
   const filters = { type: 'messaging' };
   const sort = { last_message_at: -1 };
+
   return (
     <div>
       <Chat client={chatClient} theme={'messaging light'}>

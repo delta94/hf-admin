@@ -7,7 +7,6 @@ import { useCookies } from 'react-cookie';
 
 import LoginButton from './LoginButton';
 
-import Menu from '../Menu';
 let query;
 
 const Login = () => {
@@ -57,13 +56,6 @@ const Login = () => {
     setCookie('stream-chat-token', chatToken);
   };
 
-  if (data) {
-    if (data.login) {
-      onCookie(data.login.loginToken, data.login.chatToken);
-      window.location.reload();
-    }
-  }
-
   if (loading) return <p>로딩 중...</p>;
   if (error) {
     return (
@@ -75,6 +67,15 @@ const Login = () => {
         onLogin={onLogin}
       />
     );
+  }
+
+  if (data) {
+    if (data.login) {
+      if (data.login.user.role === 'ADMIN') {
+        onCookie(data.login.loginToken, data.login.chatToken);
+        window.location.reload();
+      }
+    }
   }
 
   return (
