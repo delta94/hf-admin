@@ -25,6 +25,11 @@ const Cards = () => {
   if (error) return <p>오류 :(</p>;
 
   let totalUser = data.users.length;
+  let googleUser = data.users.filter((user) => user.provider === 'GOOGLE')
+    .length;
+  let facebookUser = data.users.filter((user) => user.provider === 'FACEBOOK')
+    .length;
+
   let numberOfFollowing = 0;
   data.users.map((user) =>
     user.following.map((follwing) => {
@@ -116,7 +121,9 @@ const Cards = () => {
           </StyledCard>
         )}
       </DashboardDiv1>
-      {total ? <TotalUser /> : null}
+      {total ? (
+        <TotalUser googleUser={googleUser} facebookUser={facebookUser} />
+      ) : null}
       {best ? <BestUser /> : null}
     </>
   );

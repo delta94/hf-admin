@@ -16,7 +16,7 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(initIsLogin);
   const [cookies, setCookie, removeCookie] = useCookies(['name']);
 
-  const { loading, error, data } = useQuery(GET_TOKEN, {
+  const { loading, error, data }: any = useQuery(GET_TOKEN, {
     variables: { ...query },
   });
 
@@ -31,11 +31,11 @@ const Login = () => {
     localStorage.setItem('isLogin', JSON.stringify(isLogin));
   });
 
-  const onChangeUsernmae = (e) => {
+  const onChangeUsernmae = (e: any) => {
     setUsername(e.target.value);
   };
 
-  const onChangePassword = (e) => {
+  const onChangePassword = (e: any) => {
     setPassword(e.target.value);
   };
 
@@ -51,7 +51,7 @@ const Login = () => {
     window.location.reload();
   };
 
-  const onCookie = (loginToken, chatToken) => {
+  const onCookie = (loginToken: string, chatToken: string) => {
     setCookie('access-token', loginToken);
     setCookie('stream-chat-token', chatToken);
   };

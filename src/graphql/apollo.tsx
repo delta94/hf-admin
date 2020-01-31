@@ -9,7 +9,7 @@ const httpLink = createHttpLink({
   credentials: 'include',
 });
 
-const authLink = setContext((_, { headers }) => {
+const authLink = setContext((_, { headers }: any) => {
   const token = Cookies.get('access-token');
 
   return {

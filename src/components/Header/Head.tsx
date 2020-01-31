@@ -7,8 +7,6 @@ import { Input, Icon, Button, Form } from 'antd';
 import { Layout } from 'antd';
 const { Header } = Layout;
 
-// header 에서 메시지 총합을 menu에 쏴줘야 할 듯
-
 function Head() {
   return (
     <Header className="header">

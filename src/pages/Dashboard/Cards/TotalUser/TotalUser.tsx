@@ -19,19 +19,19 @@ const InnerDiv = styled.div`
   width: 22%;
 `;
 
-const TotalUser = () => {
+const TotalUser = ({ googleUser, facebookUser }) => {
   return (
     <OuterDiv>
       <InnerDiv>
         <div style={{ color: 'white', fontSize: '2rem', marginLeft: '20px' }}>
           <Icon type="google" />
-          <span style={{ marginLeft: '30px' }}>144명</span>
+          <span style={{ marginLeft: '20px' }}>{googleUser}명</span>
         </div>
       </InnerDiv>
       <InnerDiv>
         <div style={{ color: 'white', fontSize: '2rem', marginLeft: '20px' }}>
           <Icon type="facebook" />
-          <span style={{ marginLeft: '30px' }}>0명</span>
+          <span style={{ marginLeft: '20px' }}>{facebookUser}명</span>
         </div>
       </InnerDiv>
       <InnerDiv>
