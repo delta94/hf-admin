@@ -95,7 +95,7 @@ const TodayUser = () => {
     <OuterDiv>
       <UserDiv style={{ backgroundColor: 'white' }}>
         <span style={{ position: 'relative', left: '10px', fontSize: '20px' }}>
-          New Users: {dataSource.length}
+          신규 회원: {dataSource.length}
         </span>
         <Table columns={columns} dataSource={dataSource} />
       </UserDiv>

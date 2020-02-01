@@ -100,7 +100,7 @@ const Cards = () => {
           <StyledCard
             title={
               <span style={{ color: 'white' }}>
-                Gender graph <Icon type="bar-chart" />
+                Gender Ratio <Icon type="bar-chart" />
               </span>
             }
             style={{

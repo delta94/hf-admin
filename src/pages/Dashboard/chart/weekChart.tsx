@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import { HorizontalBar } from 'react-chartjs-2';
 
+//
+
 const fakeData = {
   labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   datasets: [
@@ -46,7 +48,7 @@ export const WEEK_CHART = () => {
           },
           title: {
             display: true,
-            text: '요일별 사용빈도',
+            text: '요일별 유저',
             fontSize: 20,
           },
           responsive: true,
@@ -128,7 +130,7 @@ export const WEEK_CHART = () => {
         },
         title: {
           display: true,
-          text: '요일별 사용빈도',
+          text: '요일별 유저',
           fontSize: 20,
         },
         responsive: true,

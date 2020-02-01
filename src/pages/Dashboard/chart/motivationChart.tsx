@@ -41,7 +41,7 @@ export const MOTIVATION_CHART = () => {
 
           title: {
             display: true,
-            text: 'motivation',
+            text: '가입 동기',
             fontSize: 20,
           },
           legend: {
@@ -105,7 +105,7 @@ export const MOTIVATION_CHART = () => {
 
         title: {
           display: true,
-          text: 'motivation',
+          text: '가입 동기',
           fontSize: 20,
         },
         legend: {
