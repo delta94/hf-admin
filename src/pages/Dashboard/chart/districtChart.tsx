@@ -38,7 +38,7 @@ export const District_Chart = () => {
         data={fakeData}
         options={{
           title: {
-            display: true,
+            display: false,
             fontSize: 20,
           },
           responsive: true,
@@ -47,30 +47,73 @@ export const District_Chart = () => {
       />
     );
 
-  let gangnam = 0;
-  let songpa = 0;
+  let dongdaemoon = 0;
+  let kangpook = 0;
   let youngsan = 0;
+  let guemcheon = 0;
+  let ganseo = 0;
+  let eunpyeong = 0;
+  let songpa = 0;
+  let gangnam = 0;
 
   data.users.filter((user) =>
     user.ableDistricts.filter((ableDistrict) => {
-      if (ableDistrict.district.nameOfGu === '강남구') {
-        gangnam += 1;
+      if (ableDistrict.district.nameOfGu === '동대문구') {
+        dongdaemoon += 1;
+      }
+      if (ableDistrict.district.nameOfGu === '강북구') {
+        kangpook += 1;
+      }
+      if (ableDistrict.district.nameOfGu === '용산구') {
+        youngsan += 1;
+      }
+      if (ableDistrict.district.nameOfGu === '금천구') {
+        guemcheon += 1;
+      }
+      if (ableDistrict.district.nameOfGu === '강서구') {
+        ganseo += 1;
+      }
+      if (ableDistrict.district.nameOfGu === '은평구') {
+        eunpyeong += 1;
       }
       if (ableDistrict.district.nameOfGu === '송파구') {
         songpa += 1;
       }
-      if (ableDistrict.district.nameOfGu === '용산구') {
-        youngsan += 1;
+      if (ableDistrict.district.nameOfGu === '강남구') {
+        gangnam += 1;
       }
     }),
   );
 
   let pieData = {
-    labels: ['강남', '송파', '용산'],
+    labels: ['동대문', '강북', '용산', '금천', '강서', '은평', '송파', '강남'],
     datasets: [
       {
-        data: [gangnam, songpa, youngsan],
-        backgroundColor: ['#bc5090', '#ef5675', '#ff764a'],
+        data: [
+          dongdaemoon,
+          kangpook,
+          youngsan,
+          guemcheon,
+          ganseo,
+          eunpyeong,
+          songpa,
+        ],
+        backgroundColor: [
+          '#003f5c',
+          '#374c80',
+          '#7a5195',
+          '#bc5090',
+          '#ef5675',
+          '#ff764a',
+          '#ffa600',
+          '#003f5c',
+          '#374c80',
+          '#7a5195',
+          '#bc5090',
+          '#ef5675',
+          '#ff764a',
+          '#ffa600',
+        ],
       },
     ],
   };
@@ -79,6 +122,10 @@ export const District_Chart = () => {
     <Pie
       data={pieData}
       options={{
+        legend: {
+          display: false,
+          position: 'top',
+        },
         title: {
           display: true,
           text: '지역 별 운동가능 비율',
