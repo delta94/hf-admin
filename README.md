@@ -67,7 +67,6 @@ yarn start
 # 알려진 버그
 
 messages 페이지에서 Rerender시 읽은 메시지 처리가 되지 않음.
-message 방 이름이 정해지면 방 이름이 고정 됨
 
 # 회고
 
