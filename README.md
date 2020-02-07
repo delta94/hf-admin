@@ -69,6 +69,8 @@ yarn start
 
 # 주요 이슈
 
+# 회고
+
 # tech stack
 
 - React
