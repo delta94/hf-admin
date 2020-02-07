@@ -21,23 +21,21 @@ const InnerDiv = styled.div`
   border-radius: 20px;
 `;
 
-const BestUser = () => {
-  return (
-    <OuterDiv>
-      <InnerDiv>
-        <span style={{ position: 'relative', left: '15px', fontSize: '25px' }}>
-          Ranking Followers
-        </span>
-        <FollowersRank />
-      </InnerDiv>
-      <InnerDiv>
-        <span style={{ position: 'relative', left: '15px', fontSize: '25px' }}>
-          Ranking Follwings
-        </span>
-        <FollowingsRank />
-      </InnerDiv>
-    </OuterDiv>
-  );
-};
+const BestUser = () => (
+  <OuterDiv>
+    <InnerDiv>
+      <span style={{ position: 'relative', left: '15px', fontSize: '25px' }}>
+        Ranking Followers
+      </span>
+      <FollowersRank />
+    </InnerDiv>
+    <InnerDiv>
+      <span style={{ position: 'relative', left: '15px', fontSize: '25px' }}>
+        Ranking Follwings
+      </span>
+      <FollowingsRank />
+    </InnerDiv>
+  </OuterDiv>
+);
 
 export default BestUser;

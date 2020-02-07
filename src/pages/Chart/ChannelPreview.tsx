@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
-let i = 0;
+import React from 'react';
 
 const ChannelPreview = ({ setActiveChannel, channel }) => {
   const unreadCount = channel.countUnread();
-
-  useEffect(() => {
-    i += unreadCount;
-  });
 
   return (
     <div style={{ height: '40px', fontSize: '1.2rem' }}>

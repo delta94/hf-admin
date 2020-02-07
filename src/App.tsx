@@ -1,16 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import 'antd/dist/antd.css';
+
 import { ApolloProvider } from '@apollo/react-hooks';
 import { Layout } from 'antd';
 import styled from 'styled-components';
 
-import Header from './components/Header/Head';
+import Header from './components/Header/Header';
 import Sidebar from './components/SideBar/Sidebar';
 
 import Dashboard from './pages/Dashboard/Dashboard';
-import Users from './pages/Users';
-import Setting from './pages/Setting/Setting';
+import Users from './pages/Users/Users';
 import Messages from './pages/Messages/Message';
 
 import client from './graphql/apollo';
@@ -33,7 +32,6 @@ const App = () => {
               <Switch>
                 <Route exact path="/" component={Dashboard} />
                 <Route path="/users" component={Users} />
-                <Route exact path="/setting" component={Setting} />
                 <Route exact path="/messages" component={Messages} />
               </Switch>
             </Layout>

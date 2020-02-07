@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
-import 'antd/dist/antd.css';
+
 import { Icon } from 'antd';
 import { GENDER_CHART } from '../chart/genderChart';
 

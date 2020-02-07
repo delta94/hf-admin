@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Icon } from 'antd';
-import 'antd/dist/antd.css';
 
 const OuterDiv = styled.div`
   display: flex;
@@ -19,35 +18,39 @@ const InnerDiv = styled.div`
   width: 22%;
 `;
 
-const TotalUser = ({ googleUser, facebookUser }) => {
-  return (
-    <OuterDiv>
-      <InnerDiv>
-        <div style={{ color: 'white', fontSize: '2rem', marginLeft: '20px' }}>
-          <Icon type="google" />
-          <span style={{ marginLeft: '20px' }}>{googleUser}명</span>
-        </div>
-      </InnerDiv>
-      <InnerDiv>
-        <div style={{ color: 'white', fontSize: '2rem', marginLeft: '20px' }}>
-          <Icon type="facebook" />
-          <span style={{ marginLeft: '20px' }}>{facebookUser}명</span>
-        </div>
-      </InnerDiv>
-      <InnerDiv>
-        <div style={{ color: 'white', fontSize: '2rem', marginLeft: '20px' }}>
-          <Icon type="github" />
-          <span style={{ marginLeft: '30px' }}>0명</span>
-        </div>
-      </InnerDiv>
-      <InnerDiv>
-        <div style={{ color: 'white', fontSize: '2rem', marginLeft: '20px' }}>
-          <span>K</span>
-          <span style={{ marginLeft: '30px' }}>0명</span>
-        </div>
-      </InnerDiv>
-    </OuterDiv>
-  );
-};
+const Card = styled.div`
+  color: white;
+  font-size: 2rem;
+  margin-left: 20px;
+`;
+
+const TotalUser = ({ googleUser, facebookUser }) => (
+  <OuterDiv>
+    <InnerDiv>
+      <Card>
+        <Icon type="google" />
+        <span style={{ marginLeft: '20px' }}>{googleUser}명</span>
+      </Card>
+    </InnerDiv>
+    <InnerDiv>
+      <Card>
+        <Icon type="facebook" />
+        <span style={{ marginLeft: '20px' }}>{facebookUser}명</span>
+      </Card>
+    </InnerDiv>
+    <InnerDiv>
+      <Card>
+        <Icon type="github" />
+        <span style={{ marginLeft: '30px' }}>0명</span>
+      </Card>
+    </InnerDiv>
+    <InnerDiv>
+      <Card>
+        <span>K</span>
+        <span style={{ marginLeft: '30px' }}>0명</span>
+      </Card>
+    </InnerDiv>
+  </OuterDiv>
+);
 
 export default TotalUser;

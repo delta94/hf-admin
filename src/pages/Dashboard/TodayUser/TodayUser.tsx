@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS } from '../../../graphql/queries';
 import { District_Chart } from '../chart/districtChart';
 import styled from 'styled-components';
-import 'antd/dist/antd.css';
 import { Table } from 'antd';
 
 import { todayDate } from '../../../utils/todayDate';
@@ -31,7 +30,7 @@ const ChartDiv = styled.div`
 `;
 
 const TodayUser = () => {
-  const [id, setId] = useState(null);
+  const [user, setUser] = useState(null);
 
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
@@ -45,7 +44,12 @@ const TodayUser = () => {
       dataIndex: 'picture',
       key: 'picture',
       render: (text, record) => {
-        return <img src={record.picture} />;
+        return (
+          <img
+            src={record.picture}
+            style={{ width: '40px', borderRadius: '50%' }}
+          />
+        );
       },
     },
     {
@@ -65,7 +69,7 @@ const TodayUser = () => {
             <div>
               <a
                 onClick={() => {
-                  setId(record.key);
+                  setUser(record.key);
                 }}
               >
                 Message
@@ -102,7 +106,7 @@ const TodayUser = () => {
       <ChartDiv>
         <District_Chart />
       </ChartDiv>
-      {id ? <Message id={id} /> : null}
+      {user ? <Message id={user} /> : null}
     </OuterDiv>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import { District_Chart } from './chart/districtChart';
-// import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
+
 import { WEEK_CHART } from './chart/weekChart';
 import { MOTIVATION_CHART } from './chart/motivationChart';
 import { Card, Layout, Table } from 'antd';

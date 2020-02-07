@@ -5,8 +5,6 @@ import { GET_USERS } from '../../graphql/queries';
 import Cards from './Cards/Crads';
 import TodayUser from './TodayUser/TodayUser';
 
-// import { District_Chart } from './chart/districtChart';
-// import { LEVELOF3DAE_CHART } from './chart/levelOf3DaeChart';
 import { WEEK_CHART } from './chart/weekChart';
 import { MOTIVATION_CHART } from './chart/motivationChart';
 
@@ -21,6 +19,7 @@ const Dashboard = () => {
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
+
   if (loading) return <Skeleton />;
   if (error) return <Skeleton />;
 

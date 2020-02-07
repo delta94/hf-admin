@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
-import { Button, Form } from 'antd';
+import { Button } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_TOKEN } from '../../graphql/queries';
 import { useCookies } from 'react-cookie';
@@ -11,9 +11,9 @@ let query;
 
 const Login = () => {
   const initIsLogin = () => Boolean(localStorage.getItem('isLogin') || false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(initIsLogin);
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [isLogin, setIsLogin] = useState<boolean>(initIsLogin);
   const [cookies, setCookie, removeCookie] = useCookies(['name']);
 
   const { loading, error, data }: any = useQuery(GET_TOKEN, {
@@ -73,6 +73,7 @@ const Login = () => {
     if (data.login) {
       if (data.login.user.role === 'ADMIN') {
         onCookie(data.login.loginToken, data.login.chatToken);
+
         window.location.reload();
       }
     }
@@ -91,15 +92,13 @@ const Login = () => {
           </Button>
         </>
       ) : (
-        <>
-          <LoginButton
-            username={username}
-            onChangeUsernmae={onChangeUsernmae}
-            password={password}
-            onChangePassword={onChangePassword}
-            onLogin={onLogin}
-          />
-        </>
+        <LoginButton
+          username={username}
+          onChangeUsernmae={onChangeUsernmae}
+          password={password}
+          onChangePassword={onChangePassword}
+          onLogin={onLogin}
+        />
       )}
     </>
   );

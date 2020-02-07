@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Chat,
   Channel,
   ChannelHeader,
-  ChannelList,
   Thread,
   Window,
 } from 'stream-chat-react';
-import { API_KEY, TOKEN, SECRET } from '../../config/config';
+import { API_KEY } from '../../config/config';
 import { MessageList, MessageInput } from 'stream-chat-react';
 import { StreamChat } from 'stream-chat';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_USERS, GET_USERINFO } from '../../graphql/queries';
-import 'antd/dist/antd.css';
 
 import 'stream-chat-react/dist/css/index.css';
 import Cookies from 'js-cookie';
@@ -21,7 +19,6 @@ const chatClient = new StreamChat(API_KEY);
 const token = Cookies.get('stream-chat-token');
 
 const Message = (props) => {
-  const [isOpen, setIsOpen] = useState(true);
   const { loading, error, data } = useQuery(GET_USERS, {
     fetchPolicy: 'network-only',
   });
