@@ -54,7 +54,6 @@ export const District_Chart = () => {
   let ganseo = 0;
   let eunpyeong = 0;
   let songpa = 0;
-  let gangnam = 0;
 
   data.users.filter((user) =>
     user.ableDistricts.filter((ableDistrict) => {
@@ -79,14 +78,11 @@ export const District_Chart = () => {
       if (ableDistrict.district.nameOfGu === '송파구') {
         songpa += 1;
       }
-      if (ableDistrict.district.nameOfGu === '강남구') {
-        gangnam += 1;
-      }
     }),
   );
 
   let pieData = {
-    labels: ['동대문', '강북', '용산', '금천', '강서', '은평', '송파', '강남'],
+    labels: ['동대문', '강북', '용산', '금천', '강서', '은평', '송파'],
     datasets: [
       {
         data: [

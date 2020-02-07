@@ -10,7 +10,7 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }: any) => {
-  const token = Cookies.get('access-token');
+  const token = Cookies.get('access-token-admin');
 
   return {
     headers: {

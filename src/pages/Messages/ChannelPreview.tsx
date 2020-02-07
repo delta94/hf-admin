@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import 'antd/dist/antd.css';
@@ -11,14 +11,13 @@ const CustomerList = styled.div`
 `;
 
 const ChannelPreview = ({ setActiveChannel, channel }) => {
-  const unreadCount = channel.countUnread();
+  // const unreadCount = channel.countUnread();
 
   return (
     <CustomerList>
       <div style={{ marginLeft: '20px' }}>
-        <Badge count={unreadCount}>
-          <Avatar size="large" icon="user" />
-        </Badge>
+        <Avatar size="large" icon="user" />
+
         <a
           onClick={() => {
             setActiveChannel(channel);

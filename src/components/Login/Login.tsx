@@ -45,15 +45,15 @@ const Login = () => {
   };
 
   const onLogout = () => {
-    removeCookie('access-token');
-    removeCookie('stream-chat-token');
+    removeCookie('access-token-admin');
+    removeCookie('stream-chat-token-admin');
     setIsLogin(false);
     window.location.reload();
   };
 
   const onCookie = (loginToken: string, chatToken: string) => {
-    setCookie('access-token', loginToken);
-    setCookie('stream-chat-token', chatToken);
+    setCookie('access-token-admin', loginToken);
+    setCookie('stream-chat-token-admin', chatToken);
   };
 
   if (loading) return <p>로딩 중...</p>;
@@ -81,7 +81,7 @@ const Login = () => {
 
   return (
     <>
-      {isLogin && cookies['access-token'] ? (
+      {isLogin && cookies['access-token-admin'] ? (
         <>
           <Button
             onClick={() => {

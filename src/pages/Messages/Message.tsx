@@ -15,7 +15,7 @@ import ChannelPreview from './ChannelPreview';
 import 'stream-chat-react/dist/css/index.css';
 
 const chatClient = new StreamChat(API_KEY);
-const token = Cookies.get('stream-chat-token');
+const token = Cookies.get('stream-chat-token-admin');
 
 const App = () => {
   const { error, loading, data: dataMe } = useQuery(GET_USERINFO, {

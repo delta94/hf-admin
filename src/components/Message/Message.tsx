@@ -16,7 +16,7 @@ import 'stream-chat-react/dist/css/index.css';
 import Cookies from 'js-cookie';
 
 const chatClient = new StreamChat(API_KEY);
-const token = Cookies.get('stream-chat-token');
+const token = Cookies.get('stream-chat-token-admin');
 
 const Message = (props) => {
   const { loading, error, data } = useQuery(GET_USERS, {

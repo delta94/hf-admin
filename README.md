@@ -4,7 +4,7 @@
 
 헬스 친구의 회원 정보를 조회하는 웹 페이지 입니다.
 
-# Install 및 실행
+# Install & Start
 
 **1. 코드 복사**
 
@@ -18,23 +18,20 @@ https://github.com/sbin0819/hf-admin.git
 yarn
 ```
 
-**3. Server 실행**
-
-- https://github.com/codestates/healthFriend-server 주소로 들어가 READ_ME 안내에 따라 서버 실행
-
-**4. getStream API KEY 등록**
+**3. getStream API KEY 등록**
 
 - /src/config/config_sample.tsx -> config.tsx 수정 후
 - FIX_ME를 getStream API_KEY 등록 후 사용
 
-**5. 실행**
+**4. 실행**
 
 ```
 yarn start
 ```
 
-**6. master login**
+**5. master login**
 
+- https://github.com/codestates/healthFriend-server 주소로 들어가 READ_ME 안내에 따라 서버 실행
 - lgoin input에 admin 계정 입력
 - id: admin@hf.club password: abc123
 
@@ -67,7 +64,10 @@ yarn start
 |-- README.md
 ```
 
-# 주요 이슈
+# 알려진 버그
+
+messages 페이지에서 Rerender시 읽은 메시지 처리가 되지 않음.
+message 방 이름이 정해지면 방 이름이 고정 됨
 
 # 회고
 
@@ -80,6 +80,7 @@ yarn start
 - Styled-components
 - getStream
 
-# LICENSE
+# 배포자 정보
 
-MIT
+하수빈
+sbinha123@gmail.com
