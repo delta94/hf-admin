@@ -24,7 +24,7 @@ yarn
 
 **4. getStream API KEY 등록**
 
-- .env_sample -> .env로 수정 후
+- /src/config/config_sample.tsx -> config.tsx 수정 후
 - FIX_ME를 getStream API_KEY 등록 후 사용
 
 **5. 실행**
