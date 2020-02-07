@@ -1,10 +1,10 @@
-## HealthFriend-front
+# HealthFriend-front
 
 헬스 친구 admin page(front)
 
 헬스 친구의 회원 정보를 조회하는 웹 페이지 입니다.
 
-## Install
+# Install 및 실행
 
 **1. 코드 복사**
 
@@ -38,7 +38,7 @@ yarn start
 - lgoin input에 admin 계정 입력
 - id: admin@hf.club password: abc123
 
-## 주요 폴더 구조
+# 주요 폴더 구조
 
 ```
 |-- src/
@@ -54,12 +54,12 @@ yarn start
 |    |       |-------- queries.tsx  - query 데이터 담당 파일
 |    |
 |    |
-|    |--- pages /
+|    |--- pages/
 |    |       |-------- Dashboard/   - 각종 차트를 담당하는 페이지
 |    |       |-------- Users/       - user 정보 담당 페이지
 |    |       |-------- Messages/    - message 관련 페이지
 |    |
-|    |--- utils /       - user 가입날짜 정보
+|    |--- utils/       - user 가입날짜 정보
 |    |
 |    |--- App.tsx       -  메인 타입스크립트
 |    |--- index.tsx     -  어플리케이션 엔트리 포인트
@@ -67,7 +67,7 @@ yarn start
 |-- README.md
 ```
 
-## tech stack
+# tech stack
 
 - React
 - TypeScript
@@ -75,6 +75,6 @@ yarn start
 - Ant-design
 - Styled-components
 
-## LICENSE
+# LICENSE
 
 MIT
