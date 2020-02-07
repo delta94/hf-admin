@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_USERS } from '../../../graphql/queries';
 import { District_Chart } from '../chart/districtChart';
 import styled from 'styled-components';
 import { Table } from 'antd';
@@ -29,12 +27,9 @@ const ChartDiv = styled.div`
   width: 30%;
 `;
 
-const TodayUser = () => {
+const TodayUser = ({ loading, error, data }) => {
   const [user, setUser] = useState(null);
 
-  const { loading, error, data } = useQuery(GET_USERS, {
-    fetchPolicy: 'network-only',
-  });
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>오류 :(</p>;
 

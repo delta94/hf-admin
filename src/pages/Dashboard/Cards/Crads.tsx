@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_USERS } from '../../../graphql/queries';
 
 import { Icon } from 'antd';
 import { GENDER_CHART } from '../chart/genderChart';
@@ -12,14 +10,11 @@ import { DashboardDiv1, StyledCard, CardSpan } from '../Dashboard.styled';
 
 import { CardLoading } from '../Dashboard.styled';
 
-const Cards = () => {
+const Cards = ({ loading, error, data }) => {
   const [total, setTotal] = useState(false);
   const [best, setBest] = useState(false);
   const [gender, setGender] = useState(true);
   const [average, setAverage] = useState(true);
-  const { loading, error, data } = useQuery(GET_USERS, {
-    fetchPolicy: 'network-only',
-  });
 
   if (loading) return <CardLoading />;
   if (error) return <p>오류 :(</p>;

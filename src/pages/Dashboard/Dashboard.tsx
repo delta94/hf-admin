@@ -25,8 +25,8 @@ const Dashboard = () => {
 
   return (
     <StyledContent>
-      <Cards />
-      <TodayUser />
+      <Cards {...{ loading, error, data }} />
+      <TodayUser {...{ loading, error, data }} />
       <OuterChartDiv>
         <InnerChartDiv>
           <WEEK_CHART />
