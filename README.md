@@ -43,11 +43,11 @@ yarn start
 ```
 |-- src/
 |    |-- components/
-|    |       |-------- Header/
-|    |       |-------- SideBar/
-|    |       |-------- Menu/
+|    |       |-------- Header/      - layout header 담당
+|    |       |-------- SideBar/     - layout sidebar 담당
+|    |       |-------- Menu/        - layout menu 담당
 |    |       |-------- Login/       - 로그인 담당 파일
-|    |       |-------- Message/
+|    |       |-------- Message/     - Dashboard에서 message 담당
 |    |
 |    |-- graphql/
 |    |       |-------- apollo.tsx   - grapql 정의
