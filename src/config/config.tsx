@@ -1,4 +1,4 @@
-export const API_KEY = '4rcx837szctw';
+export const API_KEY = '7gfp3v3jzxev';
 //4rcx837szctw
 //7gfp3v3jzxev
 //js3yvpj5rsny
