@@ -40,7 +40,7 @@ yarn start
 
 ## 주요 폴더 구조
 
-```bash
+```
 |-- src/
 |    |-- components/
 |    |       |-------- Header/
@@ -63,6 +63,8 @@ yarn start
 |    |
 |    |--- App.tsx       -  메인 타입스크립트
 |    |--- index.tsx     -  어플리케이션 엔트리 포인트
+|
+|-- README.md
 ```
 
 ## tech stack
