@@ -67,6 +67,8 @@ yarn start
 |-- README.md
 ```
 
+# 주요 이슈
+
 # tech stack
 
 - React
@@ -74,6 +76,7 @@ yarn start
 - GraphQL(Apollo)
 - Ant-design
 - Styled-components
+- getStream
 
 # LICENSE
 
