@@ -38,6 +38,33 @@ yarn start
 - lgoin input에 admin 계정 입력
 - id: admin@hf.club password: abc123
 
+## 주요 폴더 구조
+
+```bash
+|-- src/
+|    |-- components/
+|    |       |-------- Header/
+|    |       |-------- SideBar/
+|    |       |-------- Menu/
+|    |       |-------- Login/       - 로그인 담당 파일
+|    |       |-------- Message/
+|    |
+|    |-- graphql/
+|    |       |-------- apollo.tsx   - grapql 정의
+|    |       |-------- queries.tsx  - query 데이터 담당 파일
+|    |
+|    |
+|    |--- pages /
+|    |       |-------- Dashboard/   - 각종 차트를 담당하는 페이지
+|    |       |-------- Users/       - user 정보 담당 페이지
+|    |       |-------- Messages/    - message 관련 페이지
+|    |
+|    |--- utils /       - user 가입날짜 정보
+|    |
+|    |--- App.tsx       -  메인 타입스크립트
+|    |--- index.tsx     -  어플리케이션 엔트리 포인트
+```
+
 ## tech stack
 
 - React
