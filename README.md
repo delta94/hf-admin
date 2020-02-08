@@ -67,8 +67,7 @@ yarn start
 # 알려진 버그
 
 messages 페이지에서 Rerender시 읽은 메시지 처리가 되지 않음.
-
-# 회고
+완성도를 생각해 읽은 메시지 처리 기능을 뺌.
 
 # tech stack
 
